@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { Menu, Phone, ChevronDown, MapPin, X } from "lucide-react";
 import Image from "next/image";
@@ -24,7 +25,6 @@ const TEAL_LIGHT = "#E6F4F6";
 export default function Header() {
   const [scrolled, setScrolled]   = useState(false);
   const [stateOpen, setStateOpen] = useState(false);
-  const [mobileStateOpen, setMobileStateOpen] = useState(false);
   const [bannerOpen, setBannerOpen] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -33,11 +33,6 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
 
   return (
     <div className="sticky top-0 z-50">
@@ -177,36 +172,30 @@ export default function Header() {
                 Start ESA Evaluation
               </a>
 
-              {/* Mobile hamburger — custom drawer (reliable on touch devices) */}
-              <button
-                type="button"
-                aria-label="Open navigation menu"
-                aria-expanded={mobileOpen}
-                onClick={() => setMobileOpen(true)}
-                className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg transition-colors hover:bg-gray-100 touch-manipulation"
-                style={{ color: TEAL_DARK }}
-              >
-                <Menu className="size-5" />
-              </button>
-
-              {mobileOpen && (
-                <div className="fixed inset-0 z-[300] lg:hidden" role="dialog" aria-modal="true" aria-label="Navigation menu">
+              {/* Mobile hamburger */}
+              <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+                <SheetTrigger asChild>
                   <button
                     type="button"
-                    aria-label="Close navigation menu"
-                    className="absolute inset-0 bg-black/40 touch-manipulation"
-                    onClick={() => setMobileOpen(false)}
-                  />
-                  <div
-                    className="absolute top-0 right-0 bottom-0 flex w-[min(320px,88vw)] flex-col border-l bg-white shadow-2xl"
-                    style={{ borderColor: "rgba(29,112,128,0.1)" }}
+                    aria-label="Open navigation menu"
+                    className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg transition-colors hover:bg-gray-100"
+                    style={{ color: TEAL_DARK }}
                   >
-                  <div className="flex flex-col h-full min-h-0">
-                    {/* drawer header */}
-                    <div className="flex items-center justify-between p-5"
-                      style={{
-                        background: `linear-gradient(135deg, ${TEAL_DARK} 0%, ${TEAL} 100%)`,
-                      }}>
+                    <Menu className="size-5" />
+                  </button>
+                </SheetTrigger>
+                <SheetContent
+                  side="right"
+                  showCloseButton={false}
+                  className="w-[280px] sm:w-[320px] p-0 border-l"
+                  style={{ borderColor: "rgba(29,112,128,0.1)", background: "#fff" }}
+                >
+                  <SheetTitle className="sr-only">Navigation menu</SheetTitle>
+                  <div className="flex flex-col h-full">
+                    <div
+                      className="flex items-center justify-between p-5"
+                      style={{ background: `linear-gradient(135deg, ${TEAL_DARK} 0%, ${TEAL} 100%)` }}
+                    >
                       <div className="flex items-center gap-2.5">
                         <Image
                           src="/logo.webp"
@@ -222,73 +211,63 @@ export default function Header() {
                           </div>
                         </div>
                       </div>
-                      <button type="button" onClick={() => setMobileOpen(false)} className="text-white/60 hover:text-white transition-colors p-2 touch-manipulation" aria-label="Close menu">
+                      <button
+                        type="button"
+                        onClick={() => setMobileOpen(false)}
+                        className="text-white/60 hover:text-white transition-colors p-1"
+                        aria-label="Close menu"
+                      >
                         <X className="size-4" />
                       </button>
                     </div>
 
-                    {/* drawer links */}
                     <nav className="flex-1 overflow-y-auto p-4 flex flex-col gap-0.5">
                       <p className="text-[10px] font-bold uppercase tracking-widest px-3 pt-1 pb-2" style={{ color: "#9CA3AF" }}>
                         Navigation
                       </p>
-                      <button
-                        type="button"
-                        onClick={() => setMobileStateOpen((open) => !open)}
-                        className="flex w-full items-center justify-between gap-2.5 px-3 py-2.5 text-sm font-medium rounded-xl transition-colors hover:bg-gray-50 touch-manipulation"
+                      <a
+                        href="#hero"
+                        onClick={() => setMobileOpen(false)}
+                        className="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium rounded-xl transition-colors hover:bg-gray-50"
                         style={{ color: TEAL_DARK }}
-                        aria-expanded={mobileStateOpen}
                       >
-                        <span className="flex items-center gap-2.5">
-                          <MapPin className="size-4 shrink-0" style={{ color: GOLD }} />
-                          ESA by State
-                        </span>
-                        <ChevronDown className={`size-4 shrink-0 transition-transform duration-200 ${mobileStateOpen ? "rotate-180" : ""}`} />
-                      </button>
-                      {mobileStateOpen && (
-                        <div className="ml-3 mr-1 mb-1 flex flex-col gap-0.5 rounded-xl p-2"
-                          style={{ background: TEAL_LIGHT }}>
-                          {esaByState.map((s) => (
-                            <a
-                              key={s}
-                              href="#hero"
-                              onClick={() => { setMobileOpen(false); setMobileStateOpen(false); }}
-                              className="px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-white/70 touch-manipulation"
-                              style={{ color: TEAL_DARK }}
-                            >
-                              {s}
-                            </a>
-                          ))}
-                        </div>
-                      )}
+                        <MapPin className="size-4 shrink-0" style={{ color: GOLD }} />
+                        ESA by State
+                      </a>
                       {navLinks.map((l) => (
-                        <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
+                        <a
+                          key={l.label}
+                          href={l.href}
+                          onClick={() => setMobileOpen(false)}
                           className="px-3 py-2.5 text-sm font-medium rounded-xl transition-colors hover:bg-gray-50"
-                          style={{ color: TEAL_DARK }}>
+                          style={{ color: TEAL_DARK }}
+                        >
                           {l.label}
                         </a>
                       ))}
                     </nav>
 
-                    {/* drawer footer */}
-                    <div className="p-4 flex flex-col gap-2.5"
-                      style={{ borderTop: "1px solid rgba(29,112,128,0.08)" }}>
-                      <a href="tel:+18884124041"
+                    <div className="p-4 flex flex-col gap-2.5" style={{ borderTop: "1px solid rgba(29,112,128,0.08)" }}>
+                      <a
+                        href="tel:+18884124041"
                         className="flex items-center gap-2 px-3 py-2.5 text-sm rounded-xl"
-                        style={{ background: TEAL_LIGHT, color: TEAL_DARK }}>
+                        style={{ background: TEAL_LIGHT, color: TEAL_DARK }}
+                      >
                         <Phone className="size-4 shrink-0" style={{ color: TEAL }} />
                         (888) 412-4041
                       </a>
-                      <a href="#hero" onClick={() => setMobileOpen(false)}
-                        className="btn-hover-gold-line w-full h-11 rounded-xl text-white text-sm font-bold transition-opacity hover:opacity-90 overflow-hidden flex items-center justify-center touch-manipulation"
-                        style={{ background: `linear-gradient(135deg, ${GOLD}, #E0B830)` }}>
+                      <a
+                        href="#hero"
+                        onClick={() => setMobileOpen(false)}
+                        className="btn-hover-gold-line w-full h-11 rounded-xl text-white text-sm font-bold transition-opacity hover:opacity-90 overflow-hidden flex items-center justify-center"
+                        style={{ background: `linear-gradient(135deg, ${GOLD}, #E0B830)` }}
+                      >
                         Start ESA Evaluation
                       </a>
                     </div>
                   </div>
-                  </div>
-                </div>
-              )}
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
         </div>

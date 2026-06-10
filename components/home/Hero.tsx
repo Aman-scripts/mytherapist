@@ -112,52 +112,31 @@ export default function Hero() {
 
             {/* State select + CTA — equal height & width */}
             <div className="relative z-20 grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-xl items-stretch">
-              {/* Native select — reliable on mobile touch browsers */}
-              <select
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-                aria-label="Select your state"
-                className="lg:hidden w-full h-12 min-h-12 rounded-full border-0 px-4 pr-10 font-semibold text-sm shadow-lg touch-manipulation appearance-none"
-                style={{
-                  height: 48,
-                  minHeight: 48,
-                  background: "rgba(255,255,255,0.96) url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134C5F' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\") no-repeat right 1rem center / 1rem",
-                  color: state ? "#134C5F" : "#5A7A80",
-                }}
-              >
-                <option value="" disabled>Select your state…</option>
-                {US_STATES.map((s) => (
-                  <option key={s} value={s}>{s}</option>
-                ))}
-              </select>
-
-              <div className="hidden lg:block w-full">
-                <Select onValueChange={setState} value={state}>
-                  <SelectTrigger
-                    className="!h-12 min-h-12 !w-full border-0 px-4 py-0 font-semibold rounded-full text-sm shadow-lg touch-manipulation"
-                    style={{ height: 48, minHeight: 48, background: "rgba(255,255,255,0.96)", color: "#134C5F" }}
-                    aria-label="Select your state"
-                  >
-                    <SelectValue placeholder="Select your state…" />
-                  </SelectTrigger>
-                  <SelectContent
-                    position="popper"
-                    align="start"
-                    sideOffset={6}
-                    className="z-[9999] max-h-64 w-[var(--radix-select-trigger-width)] rounded-xl border-0 p-1.5 shadow-xl bg-white"
-                  >
-                    {US_STATES.map((s) => (
-                      <SelectItem
-                        key={s}
-                        value={s}
-                        className="cursor-pointer rounded-lg py-2.5 pl-3 pr-8 focus:bg-[#C9A227] focus:text-white data-[highlighted]:bg-[#C9A227] data-[highlighted]:text-white"
-                      >
-                        {s}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+              <Select onValueChange={setState} value={state}>
+                <SelectTrigger
+                  className="!h-12 min-h-12 !w-full border-0 px-4 py-0 font-semibold rounded-full text-sm shadow-lg"
+                  style={{ height: 48, minHeight: 48, background: "rgba(255,255,255,0.96)", color: "#134C5F" }}
+                  aria-label="Select your state"
+                >
+                  <SelectValue placeholder="Select your state…" />
+                </SelectTrigger>
+                <SelectContent
+                  position="popper"
+                  align="start"
+                  sideOffset={6}
+                  className="z-[9999] max-h-64 w-[var(--radix-select-trigger-width)] rounded-xl border-0 p-1.5 shadow-xl bg-white"
+                >
+                  {US_STATES.map((s) => (
+                    <SelectItem
+                      key={s}
+                      value={s}
+                      className="cursor-pointer rounded-lg py-2.5 pl-3 pr-8 focus:bg-[#C9A227] focus:text-white data-[highlighted]:bg-[#C9A227] data-[highlighted]:text-white"
+                    >
+                      {s}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <Button
                 className="btn-hover-gold-line !h-12 min-h-12 w-full py-0 font-bold rounded-full text-white border-0 gap-2 justify-center"
                 style={{
