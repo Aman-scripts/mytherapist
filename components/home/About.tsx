@@ -1,4 +1,4 @@
-import { Award, Heart, Users } from "lucide-react";
+import { Award, Heart, Users, PawPrint } from "lucide-react";
 
 const TEAL_DARK  = "#134C5F";
 const TEAL_DEEP  = "#0D3341";
@@ -87,7 +87,7 @@ export default function About() {
             <div className="p-6 rounded-2xl flex items-start gap-4" style={{
               background: `linear-gradient(135deg, ${GOLD}22, ${GOLD}08)`, border: `1px solid ${GOLD}44`,
             }}>
-              <div className="text-4xl">🐾</div>
+              <PawPrint className="size-10 shrink-0" style={{ color: GOLD }} aria-hidden />
               <div>
                 <h4 className="text-white font-bold mb-1" style={{ fontFamily: "var(--font-outfit)" }}>Our Mission</h4>
                 <p className="text-white/65 text-sm leading-relaxed">

@@ -1,5 +1,5 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import FaqAccordion from "@/components/home/FaqAccordion";
 import { ArrowRight, PawPrint } from "lucide-react";
 import Image from "next/image";
 
@@ -61,33 +61,7 @@ export default function FAQ() {
           {/* Accordion + image */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left — accordion list */}
-            <Accordion
-              type="single"
-              collapsible
-              defaultValue="q0"
-              className="flex flex-col gap-3 w-full"
-            >
-              {faqs.map((faq, i) => (
-                <AccordionItem
-                  key={i}
-                  value={`q${i}`}
-                  className="rounded-xl border-0 overflow-hidden transition-colors duration-200"
-                >
-                  <AccordionTrigger
-                    className="cursor-pointer w-full px-5 sm:px-6 py-4 sm:py-5 text-sm sm:text-[15px] font-bold text-left hover:no-underline items-center gap-4 rounded-xl transition-colors duration-200 bg-[#F4F4F4] text-[#134C5F] data-[state=open]:bg-[#134C5F] data-[state=open]:text-white [&_[data-slot=accordion-trigger-icon]]:hidden"
-                  >
-                    <span className="flex-1 pr-3">{faq.q}</span>
-                    <PawPrint className="size-5 shrink-0" strokeWidth={2.5} aria-hidden />
-                  </AccordionTrigger>
-                  <AccordionContent
-                    className="px-5 sm:px-6 pb-5 pt-1 text-sm leading-relaxed bg-white"
-                    style={{ color: "#5A7A80" }}
-                  >
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+            <FaqAccordion items={faqs} />
 
             {/* Right — image */}
             <div className="relative w-full min-h-[320px] sm:min-h-[400px] lg:min-h-[520px] rounded-3xl overflow-hidden shadow-lg">
@@ -124,7 +98,7 @@ export default function FAQ() {
           backgroundSize: "28px 28px", pointerEvents: "none",
         }} />
         <div className="relative z-10 text-center max-w-3xl mx-auto px-4">
-          <div className="text-5xl mb-5">🐾</div>
+          <PawPrint className="size-12 mx-auto mb-5 text-white" aria-hidden />
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ fontFamily: "var(--font-outfit)" }}>
             Start Your ESA Evaluation Today
           </h2>

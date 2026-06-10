@@ -1,18 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Check, MapPin, Video, HeartPulse, ArrowRight } from "lucide-react";
-
-function LinkedInIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-4" fill="currentColor" aria-hidden>
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.126 0 2.063 2.063 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-  );
-}
+import { Check, MapPin, Video, HeartPulse, ArrowRight, Briefcase } from "lucide-react";
 
 const TEAL      = "#1D7080";
 const TEAL_DARK = "#134C5F";
 const GOLD      = "#C9A227";
+const TEXT_BODY = "#2A4D56";
 
 const therapists = [
   {
@@ -89,7 +82,7 @@ export default function Therapists() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto" style={{ perspective: 1200 }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" style={{ perspective: 1200 }}>
           {therapists.map((t) => (
             <div
               key={t.name}
@@ -136,63 +129,96 @@ export default function Therapists() {
                     className="w-9 h-9 rounded-full flex items-center justify-center text-white transition-transform hover:scale-110"
                     style={{ background: GOLD }}
                   >
-                    <LinkedInIcon />
+                    <Briefcase className="size-4" aria-hidden />
                   </a>
                 </div>
               </div>
 
               <div className="px-6 py-6">
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "#5A7A80" }}>{t.bio}</p>
+                <p
+                  className="text-[15px] sm:text-base font-medium leading-relaxed mb-6"
+                  style={{ color: TEXT_BODY }}
+                >
+                  {t.bio}
+                </p>
 
-                <div className="flex flex-col gap-2 mb-5">
+                <div
+                  className="rounded-2xl p-4 sm:p-5 mb-6 flex flex-col gap-4"
+                  style={{
+                    background: "#F8FCFD",
+                    border: "1px solid rgba(29,112,128,0.12)",
+                  }}
+                >
                   {[
-                    { Icon: MapPin, label: "Licensed In:", val: t.licensedIn },
-                    { Icon: Video,  label: "Method:",      val: t.method },
+                    { Icon: MapPin, label: "Licensed In", val: t.licensedIn },
+                    { Icon: Video,  label: "Method",      val: t.method },
                   ].map(({ Icon, label, val }) => (
-                    <div key={label} className="flex items-center gap-2 text-sm">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center shrink-0" style={{ background: "#E6F4F6" }}>
-                        <Icon className="size-3.5" style={{ color: TEAL }} />
+                    <div key={label} className="flex items-center gap-3 min-w-0">
+                      <div
+                        className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 shadow-sm"
+                        style={{ background: `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})` }}
+                      >
+                        <Icon className="size-4 text-white" />
                       </div>
-                      <span className="font-bold text-xs" style={{ color: TEAL_DARK }}>{label}</span>
-                      <span className="text-xs" style={{ color: "#5A7A80" }}>{val}</span>
+                      <div className="min-w-0">
+                        <p className="text-[11px] font-bold uppercase tracking-wider mb-0.5" style={{ color: TEAL }}>
+                          {label}
+                        </p>
+                        <p className="text-sm sm:text-[15px] font-bold truncate" style={{ color: TEAL_DARK }}>
+                          {val}
+                        </p>
+                      </div>
                     </div>
                   ))}
-                  <div className="flex items-start gap-2">
-                    <div className="w-6 h-6 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style={{ background: "#E6F4F6" }}>
-                      <HeartPulse className="size-3.5" style={{ color: TEAL }} />
+
+                  <div className="flex items-start gap-3">
+                    <div
+                      className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 shadow-sm"
+                      style={{ background: `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})` }}
+                    >
+                      <HeartPulse className="size-4 text-white" />
                     </div>
-                    <div className="flex flex-wrap gap-1">
-                      {t.focus.map((f) => (
-                        <span
-                          key={f}
-                          className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
-                          style={{
-                            background: t.useGold ? "#FDF3D0" : "#E6F4F6",
-                            color: t.useGold ? "#8B6B0A" : TEAL_DARK,
-                          }}
-                        >
-                          {f}
-                        </span>
-                      ))}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[11px] font-bold uppercase tracking-wider mb-2" style={{ color: TEAL }}>
+                        Focus Areas
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {t.focus.map((f) => (
+                          <span
+                            key={f}
+                            className="text-xs font-bold px-3 py-1.5 rounded-full"
+                            style={{
+                              background: t.useGold ? "#FDF3D0" : "#E6F4F6",
+                              color: t.useGold ? "#6B5208" : TEAL_DARK,
+                              border: `1px solid ${t.useGold ? `${GOLD}55` : "rgba(29,112,128,0.2)"}`,
+                            }}
+                          >
+                            {f}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button
-                    className="btn-hover-gold-line flex-1 !h-12 min-h-12 text-white font-bold rounded-xl text-base border-0 gap-2 px-5"
+                    className="btn-hover-gold-line flex-1 !h-12 min-h-12 text-white font-bold rounded-xl text-sm sm:text-base border-0 gap-2 px-5 shadow-md"
                     style={{
                       background: t.useGold
                         ? `linear-gradient(135deg, ${GOLD}, #E0B830)`
                         : `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})`,
+                      boxShadow: t.useGold
+                        ? `0 6px 20px ${GOLD}44`
+                        : "0 6px 20px rgba(29,112,128,0.25)",
                     }}
                   >
-                    Book Appointment <ArrowRight className="size-4" />
+                    Book Appointment <ArrowRight className="size-4 shrink-0" />
                   </Button>
                   <Button
                     variant="outline"
-                    className="flex-1 !h-12 min-h-12 rounded-xl text-base font-semibold px-5"
-                    style={{ borderColor: "rgba(29,112,128,0.2)", color: TEAL_DARK }}
+                    className="flex-1 !h-12 min-h-12 rounded-xl text-sm sm:text-base font-bold px-5 border-2 hover:bg-[#E6F4F6]"
+                    style={{ borderColor: TEAL, color: TEAL_DARK }}
                   >
                     View Profile
                   </Button>

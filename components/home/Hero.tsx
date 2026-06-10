@@ -72,10 +72,14 @@ export default function Hero() {
                 style={{ background: `${GOLD}22`, color: GOLD_BRT, borderColor: `${GOLD}44` }}>
                 <Award className="size-3" /> Licensed &amp; HIPAA-Compliant
               </span>
-              <span className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold"
+              <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold"
                 style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.85)" }}>
-                {[1,2,3,4,5].map(i => <Star key={i} className="size-3" style={{ fill: GOLD, color: GOLD }} />)}
-                <span className="ml-1.5">4.9 Rated</span>
+                <span className="inline-flex items-center gap-0.5">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} className="size-3 shrink-0" style={{ fill: GOLD, color: GOLD }} />
+                  ))}
+                </span>
+                <span>4.9 Rated</span>
               </span>
             </div>
 
@@ -107,31 +111,53 @@ export default function Hero() {
             </ul>
 
             {/* State select + CTA — equal height & width */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-xl items-stretch">
-              <Select onValueChange={setState} value={state}>
-                <SelectTrigger
-                  className="!h-12 min-h-12 !w-full border-0 px-4 py-0 font-semibold rounded-full text-sm shadow-lg"
-                  style={{ height: 48, minHeight: 48, background: "rgba(255,255,255,0.96)", color: "#134C5F" }}
-                >
-                  <SelectValue placeholder="Select your state…" />
-                </SelectTrigger>
-                <SelectContent
-                  position="popper"
-                  align="start"
-                  sideOffset={6}
-                  className="max-h-64 w-[var(--radix-select-trigger-width)] rounded-xl border-0 p-1.5 shadow-xl"
-                >
-                  {US_STATES.map((s) => (
-                    <SelectItem
-                      key={s}
-                      value={s}
-                      className="cursor-pointer rounded-lg py-2 pl-3 pr-8 focus:bg-[#C9A227] focus:text-white data-[highlighted]:bg-[#C9A227] data-[highlighted]:text-white"
-                    >
-                      {s}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            <div className="relative z-20 grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-xl items-stretch">
+              {/* Native select — reliable on mobile touch browsers */}
+              <select
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                aria-label="Select your state"
+                className="lg:hidden w-full h-12 min-h-12 rounded-full border-0 px-4 pr-10 font-semibold text-sm shadow-lg touch-manipulation appearance-none"
+                style={{
+                  height: 48,
+                  minHeight: 48,
+                  background: "rgba(255,255,255,0.96) url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134C5F' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\") no-repeat right 1rem center / 1rem",
+                  color: state ? "#134C5F" : "#5A7A80",
+                }}
+              >
+                <option value="" disabled>Select your state…</option>
+                {US_STATES.map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+
+              <div className="hidden lg:block w-full">
+                <Select onValueChange={setState} value={state}>
+                  <SelectTrigger
+                    className="!h-12 min-h-12 !w-full border-0 px-4 py-0 font-semibold rounded-full text-sm shadow-lg touch-manipulation"
+                    style={{ height: 48, minHeight: 48, background: "rgba(255,255,255,0.96)", color: "#134C5F" }}
+                    aria-label="Select your state"
+                  >
+                    <SelectValue placeholder="Select your state…" />
+                  </SelectTrigger>
+                  <SelectContent
+                    position="popper"
+                    align="start"
+                    sideOffset={6}
+                    className="z-[9999] max-h-64 w-[var(--radix-select-trigger-width)] rounded-xl border-0 p-1.5 shadow-xl bg-white"
+                  >
+                    {US_STATES.map((s) => (
+                      <SelectItem
+                        key={s}
+                        value={s}
+                        className="cursor-pointer rounded-lg py-2.5 pl-3 pr-8 focus:bg-[#C9A227] focus:text-white data-[highlighted]:bg-[#C9A227] data-[highlighted]:text-white"
+                      >
+                        {s}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
               <Button
                 className="btn-hover-gold-line !h-12 min-h-12 w-full py-0 font-bold rounded-full text-white border-0 gap-2 justify-center"
                 style={{

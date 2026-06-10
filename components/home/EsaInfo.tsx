@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Activity, TrendingUp, Calendar, ArrowRight } from "lucide-react";
+import { CheckCircle2, Activity, TrendingUp, Calendar, ArrowRight, PawPrint, Home } from "lucide-react";
 
 const TEAL      = "#1D7080";
 const TEAL_DARK = "#134C5F";
@@ -48,23 +48,29 @@ export default function EsaInfo() {
                 might otherwise have pet restrictions. A licensed mental health professional must provide a formal
                 recommendation explaining how the animal supports your emotional health.
               </p>
-              <div className="flex gap-3 flex-wrap">
-                <Button className="btn-hover-gold-line h-11 px-7 text-white font-bold rounded-full text-sm border-0 gap-2 hover:opacity-90"
-                  style={{ background: `linear-gradient(135deg, ${GOLD}, #E0B830)`, boxShadow: `0 6px 20px ${GOLD}44` }}>
-                  Learn About ESAs <ArrowRight className="size-4" />
+              <div className="flex flex-nowrap items-stretch gap-2 sm:gap-3 w-full">
+                <Button
+                  className="btn-hover-gold-line flex-1 min-w-0 h-10 sm:h-11 px-3 sm:px-7 text-white font-bold rounded-full text-xs sm:text-sm border-0 gap-1.5 sm:gap-2 hover:opacity-90 whitespace-nowrap"
+                  style={{ background: `linear-gradient(135deg, ${GOLD}, #E0B830)`, boxShadow: `0 6px 20px ${GOLD}44` }}
+                >
+                  <span className="truncate">Learn About ESAs</span>
+                  <ArrowRight className="size-3.5 sm:size-4 shrink-0" />
                 </Button>
-                <Button variant="outline" className="h-11 px-7 rounded-full font-semibold text-sm"
-                  style={{ borderColor: "rgba(29,112,128,0.25)", color: TEAL_DARK }}>
+                <Button
+                  variant="outline"
+                  className="flex-1 min-w-0 h-10 sm:h-11 px-3 sm:px-7 rounded-full font-semibold text-xs sm:text-sm whitespace-nowrap"
+                  style={{ borderColor: "rgba(29,112,128,0.25)", color: TEAL_DARK }}
+                >
                   Start Evaluation
                 </Button>
               </div>
             </div>
 
             {/* checklist card */}
-            <div className="relative">
+            <div className="relative pt-2 pr-2 sm:pt-0 sm:pr-0">
               <div className="rounded-3xl overflow-hidden shadow-2xl" style={{ boxShadow: "0 20px 60px rgba(29,112,128,0.2)" }}>
-                <div className="p-6 flex items-center gap-4" style={{ background: `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})` }}>
-                  <div className="text-4xl">🐾</div>
+                <div className="p-6 pr-16 sm:pr-6 flex items-center gap-4" style={{ background: `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})` }}>
+                  <PawPrint className="size-10 text-white shrink-0" aria-hidden />
                   <div>
                     <h3 className="text-xl font-bold text-white" style={{ fontFamily: "var(--font-outfit)" }}>Do You Need an ESA?</h3>
                     <p className="text-white/55 text-sm">Signs you may qualify</p>
@@ -82,9 +88,11 @@ export default function EsaInfo() {
                   </p>
                 </div>
               </div>
-              <div className="float-delayed absolute -top-4 -right-4 w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl text-2xl"
-                style={{ background: `linear-gradient(135deg, ${GOLD}, #E0B830)`, boxShadow: `0 8px 24px ${GOLD}55` }}>
-                🏠
+              <div
+                className="float-delayed absolute top-2 right-2 sm:-top-4 sm:-right-4 w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl"
+                style={{ background: `linear-gradient(135deg, ${GOLD}, #E0B830)`, boxShadow: `0 8px 24px ${GOLD}55` }}
+              >
+                <Home className="size-5 sm:size-7 text-white" aria-hidden />
               </div>
             </div>
           </div>
