@@ -82,11 +82,11 @@ export default function Therapists() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" style={{ perspective: 1200 }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {therapists.map((t) => (
             <div
               key={t.name}
-              className="card-tilt-back bg-white rounded-3xl overflow-hidden"
+              className="card-lift bg-white rounded-3xl overflow-hidden"
               style={{ border: "1px solid rgba(29,112,128,0.1)", boxShadow: "0 4px 20px rgba(29,112,128,0.08)" }}
             >
               {/* profile header band */}

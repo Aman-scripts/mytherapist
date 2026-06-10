@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ShieldCheck, Star, ArrowRight, CheckCircle2, Award } from "lucide-react";
+import { ShieldCheck, Star, ArrowRight, CheckCircle2, Award, TrendingUp, Calendar } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const US_STATES = [
@@ -24,6 +25,31 @@ const trustPoints = [
   "Aligned with Fair Housing Act guidelines",
 ];
 
+const counters = [
+  {
+    value: "10,000+",
+    label: "ESA Evaluations Completed",
+    tag: "Trusted Nationwide",
+    icon: TrendingUp,
+    gold: false,
+  },
+  {
+    value: "6+",
+    label: "Years Serving Nationwide",
+    tag: "Since 2019",
+    icon: Calendar,
+    gold: true,
+  },
+  {
+    value: "4.9",
+    label: "Average Client Rating",
+    tag: "1,200+ Reviews",
+    icon: Star,
+    gold: false,
+    showStars: true,
+  },
+];
+
 const TEAL_DARK  = "#0D3341";
 const TEAL       = "#1D7080";
 const TEAL_MID   = "#1F8A96";
@@ -34,34 +60,65 @@ export default function Hero() {
   const [state, setState] = useState("");
 
   return (
-    <section id="hero" className="relative overflow-hidden" style={{
-      background: `linear-gradient(135deg, ${TEAL_DARK} 0%, #134C5F 45%, ${TEAL} 100%)`,
-      minHeight: "92vh",
-      display: "flex",
-      alignItems: "center",
-    }}>
-      {/* Gold glow — top right (mirrors the logo's gold circle) */}
-      <div style={{
-        position: "absolute", top: 0, right: 0,
-        width: 650, height: 650, borderRadius: "50%",
-        background: `radial-gradient(circle, ${GOLD}30 0%, transparent 65%)`,
-        transform: "translate(25%, -25%)", pointerEvents: "none",
+    <section id="hero" className="relative overflow-hidden flex flex-col min-h-[92vh]">
+      {/* Background photo — visible, with shadow depth from overlays below */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/hero-person-pet-care.jpg"
+          alt="Person lovingly caring for their emotional support dogs"
+          fill
+          priority
+          unoptimized
+          className="object-cover object-[58%_center] sm:object-[62%_center] lg:object-[65%_center]"
+          sizes="100vw"
+        />
+      </div>
+
+      {/* Teal overlay — lighter so more of the photo shows through */}
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background: `linear-gradient(98deg, rgba(13,51,65,0.82) 0%, rgba(13,51,65,0.58) 22%, rgba(19,76,95,0.32) 42%, rgba(29,112,128,0.12) 58%, rgba(29,112,128,0.03) 70%, transparent 92%)`,
+        }}
+      />
+
+      {/* Soft shadow vignette — subtle depth at edges */}
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(ellipse 110% 90% at 50% 110%, rgba(13,51,65,0.4) 0%, transparent 52%),
+            radial-gradient(ellipse 65% 75% at 0% 50%, rgba(13,51,65,0.22) 0%, transparent 58%),
+            radial-gradient(ellipse 45% 65% at 100% 40%, rgba(13,51,65,0.12) 0%, transparent 62%),
+            linear-gradient(180deg, rgba(13,51,65,0.15) 0%, transparent 12%)
+          `,
+        }}
+      />
+
+      {/* Gold glow — top right, kept subtle so photo stays visible */}
+      <div className="absolute z-[2] pointer-events-none" style={{
+        top: 0, right: 0,
+        width: 500, height: 500, borderRadius: "50%",
+        background: `radial-gradient(circle, ${GOLD}18 0%, transparent 65%)`,
+        transform: "translate(20%, -20%)",
       }} />
-      {/* Teal glow — bottom left */}
-      <div style={{
-        position: "absolute", bottom: 0, left: 0,
-        width: 450, height: 450, borderRadius: "50%",
-        background: `radial-gradient(circle, ${TEAL_MID}30 0%, transparent 65%)`,
-        transform: "translate(-30%, 30%)", pointerEvents: "none",
+      {/* Teal glow — bottom left only */}
+      <div className="absolute z-[2] pointer-events-none" style={{
+        bottom: 0, left: 0,
+        width: 400, height: 400, borderRadius: "50%",
+        background: `radial-gradient(circle, ${TEAL_MID}22 0%, transparent 65%)`,
+        transform: "translate(-30%, 30%)",
       }} />
-      {/* Dot grid */}
-      <div style={{
-        position: "absolute", inset: 0,
-        backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)",
-        backgroundSize: "28px 28px", pointerEvents: "none",
+      {/* Dot grid — subtle, mostly on the left */}
+      <div className="absolute inset-0 z-[2] pointer-events-none" style={{
+        backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)",
+        backgroundSize: "28px 28px",
+        maskImage: "linear-gradient(100deg, black 0%, black 45%, transparent 75%)",
+        WebkitMaskImage: "linear-gradient(100deg, black 0%, black 45%, transparent 75%)",
       }} />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-28 w-full">
+      <div className="relative z-10 flex-1 flex items-center w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 lg:py-20 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* ── LEFT ── */}
@@ -230,10 +287,74 @@ export default function Hero() {
             </div>
           </div>
         </div>
+        </div>
+      </div>
+
+      {/* Trust counter band — inside hero, above wave */}
+      <div className="relative z-20 flex justify-center px-4 sm:px-6 pb-16 sm:pb-20">
+        <div className="w-full max-w-3xl">
+          <div className="rounded-xl overflow-hidden card-lift"
+            style={{
+              background: "#FFFFFF",
+              border: "1px solid rgba(29,112,128,0.1)",
+              boxShadow: "0 4px 18px rgba(29,112,128,0.07)",
+            }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x"
+              style={{ borderColor: "rgba(29,112,128,0.08)" }}>
+              {counters.map(({ value, label, tag, icon: Icon, gold, showStars }) => (
+                <div
+                  key={label}
+                  className="relative px-3 py-3 sm:px-4 sm:py-3.5 flex flex-row items-center gap-2.5 text-left overflow-hidden"
+                  style={{ background: gold ? "#FDF8E8" : "#FFFFFF" }}
+                >
+                  {gold && (
+                    <div style={{
+                      position: "absolute", top: -16, right: -16, width: 64, height: 64, borderRadius: "50%",
+                      background: `radial-gradient(circle, ${GOLD}20 0%, transparent 70%)`, pointerEvents: "none",
+                    }} />
+                  )}
+
+                  <div className="relative shrink-0 w-9 h-9 rounded-lg flex items-center justify-center shadow-sm"
+                    style={{
+                      background: gold
+                        ? `linear-gradient(135deg, ${GOLD}, ${GOLD_BRT})`
+                        : `linear-gradient(135deg, #134C5F, ${TEAL})`,
+                      boxShadow: gold ? `0 4px 12px ${GOLD}44` : "0 4px 12px rgba(29,112,128,0.18)",
+                    }}>
+                    <Icon className="size-4 text-white" fill={showStars ? "white" : "none"} />
+                  </div>
+
+                  <div className="relative min-w-0 flex-1">
+                    <span className="inline-block text-[7px] sm:text-[8px] font-bold tracking-wider uppercase rounded-full px-1.5 py-0.5 mb-0.5 leading-tight"
+                      style={{
+                        background: gold ? `${GOLD}22` : "#E6F4F6",
+                        color: gold ? "#134C5F" : TEAL,
+                        border: `1px solid ${gold ? `${GOLD}35` : "rgba(29,112,128,0.12)"}`,
+                      }}>
+                      {tag}
+                    </span>
+                    <div className="flex items-center gap-1">
+                      <span className="text-lg sm:text-xl font-extrabold leading-none" style={{
+                        color: "#134C5F",
+                        fontFamily: "var(--font-outfit)",
+                      }}>
+                        {value}
+                      </span>
+                      {showStars && (
+                        <Star className="size-3 shrink-0 fill-current" style={{ color: GOLD }} />
+                      )}
+                    </div>
+                    <p className="text-[10px] sm:text-[11px] font-medium leading-tight mt-0.5" style={{ color: "#5A7A80" }}>{label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Bottom wave */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden" style={{ lineHeight: 0 }}>
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none z-10" style={{ lineHeight: 0 }}>
         <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none" style={{ height: 60 }}>
           <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#F0F8F9" />
         </svg>
