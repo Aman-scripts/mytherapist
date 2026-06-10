@@ -1,106 +1,172 @@
-import { Badge } from "@/components/ui/badge";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { ArrowRight, PawPrint } from "lucide-react";
+import Image from "next/image";
+
+const TEAL      = "#1D7080";
+const TEAL_DARK = "#134C5F";
+const TEAL_DEEP = "#0D3341";
+const GOLD      = "#C9A227";
 
 const faqs = [
   {
-    q: "Is My ESA Therapist Legitimate?",
-    a: "Yes. My ESA Therapist connects individuals with U.S.-licensed mental health professionals who are licensed in the client's state. All evaluations follow recognized clinical standards and applicable federal housing guidelines.",
+    q: "What is an ESA letter and what can it be used for?",
+    a: "An ESA letter is a written recommendation from a licensed mental health professional. It can be used to request housing accommodations under the Fair Housing Act, allowing you to live with your ESA in housing that may otherwise have pet restrictions.",
   },
   {
-    q: "How Does My ESA Therapist Work?",
-    a: "My ESA Therapist is a telehealth platform that facilitates emotional support animal (ESA) evaluations with licensed mental health professionals. If, after a clinical evaluation, a professional determines that an emotional support animal may be appropriate, they may issue documentation that supports housing accommodation requests under applicable federal housing laws.",
+    q: "How does the online evaluation process work?",
+    a: "You schedule an appointment, complete a telehealth consultation with a licensed professional, and — if clinically appropriate — receive your ESA documentation via email.",
   },
   {
-    q: "Does My ESA Therapist Comply With HUD and Fair Housing Act Guidelines?",
-    a: "Yes. Evaluations and documentation are designed to align with current HUD guidance and Fair Housing Act (FHA) requirements, as applicable to each individual's circumstances.",
+    q: "What mental health conditions may qualify someone for an ESA?",
+    a: "Common conditions that may support ESA recommendations include anxiety, depression, PTSD, stress-related disorders, and other mental or emotional health conditions. A licensed professional makes this determination.",
   },
   {
-    q: "Does My ESA Therapist Offer Support if My Landlord Asks For Verification?",
-    a: "Yes. With the client's written authorization, licensed professionals or support staff can help clarify evaluation details or documentation when requested by a housing provider.",
+    q: "Can any type of animal be an ESA?",
+    a: "While any domesticated animal can potentially serve as an ESA, dogs and cats are most common. The animal's type and temperament may be considered by housing providers.",
   },
   {
-    q: "Is My Information Safe With My ESA Therapist?",
-    a: "Yes. All consultations and records are handled securely and in accordance with HIPAA privacy and data protection standards.",
+    q: "Is the ESA letter legally valid?",
+    a: "Our letters are prepared by independent, U.S.-licensed mental health professionals. Their validity depends on the applicable laws and how housing providers assess your documentation.",
   },
   {
-    q: "Is The Consultation Done By Video or Phone?",
-    a: "Both video and phone consultations are available, depending on provider availability and client preference.",
-  },
-  {
-    q: "What Payment Methods Does My ESA Therapist Accept?",
-    a: "Major credit cards are accepted. We authorize your payment first, but only charge it after your evaluation is completed.",
-  },
-  {
-    q: "What Happens If I'm Not Approved After My Evaluation?",
-    a: "If a licensed professional determines that an emotional support animal may not be clinically appropriate, no documentation is issued. All outcomes are based solely on professional clinical judgment.",
-  },
-  {
-    q: "Can I Change or Reschedule My Consultation?",
-    a: "Yes. Consultations may be changed or rescheduled according to provider availability.",
-  },
-  {
-    q: "Does My ESA Therapist Provide Letters For Dorms or University Housing?",
-    a: "When applicable under the Fair Housing Act or related housing regulations, ESA documentation issued following a clinical evaluation may be used to request housing accommodations in university or dorm settings.",
+    q: "When will I be charged?",
+    a: "We authorize your payment upfront but only charge you after your evaluation is completed. If you do not qualify, you are not charged.",
   },
 ];
 
 export default function FAQ() {
   return (
-    <section className="bg-white py-20" id="faq">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <Badge className="bg-[#134c5f]/10 text-[#134c5f] border-[#134c5f]/20 mb-4 text-xs uppercase tracking-widest">
-            FAQ
-          </Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#134c5f]" style={{ fontFamily: "var(--font-outfit)" }}>
-            Frequently Asked Questions
-          </h2>
-          <p className="text-[#5a7080] mt-2">
-            Get answers to common questions about ESA letters and our service.
-          </p>
-        </div>
+    <>
+      <section id="faq" className="py-16 sm:py-24" style={{ background: "#FFFFFF" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <Accordion type="single" collapsible className="flex flex-col gap-3">
-          {faqs.map((faq, i) => (
-            <AccordionItem
-              key={i}
-              value={`faq-${i}`}
-              className="border border-border rounded-xl px-5 bg-[#f7f9f8] data-[state=open]:bg-white data-[state=open]:border-[#134c5f]/30 data-[state=open]:shadow-sm transition-all"
+          {/* Title + View All button */}
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-10 lg:mb-12">
+            <h2
+              className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight"
+              style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}
             >
-              <AccordionTrigger className="text-[#134c5f] font-semibold text-left py-4 hover:no-underline">
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-[#5a7080] text-sm leading-relaxed pb-4">
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+              Frequently Asked Questions
+            </h2>
+            <Button
+              variant="outline"
+              className="h-11 px-6 rounded-lg text-xs font-bold uppercase tracking-widest shrink-0 self-start sm:self-auto hover:bg-gray-50"
+              style={{ borderColor: TEAL_DARK, color: TEAL_DARK }}
+            >
+              View All FAQ
+            </Button>
+          </div>
 
-        {/* final CTA */}
-        <div className="mt-16 text-center rounded-3xl bg-gradient-to-br from-[#134c5f] to-[#1d6e72] p-10 text-white shadow-xl">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3" style={{ fontFamily: "var(--font-outfit)" }}>
-            Ready to Start Your ESA Evaluation?
+          {/* Accordion + image */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            {/* Left — accordion list */}
+            <Accordion
+              type="single"
+              collapsible
+              defaultValue="q0"
+              className="flex flex-col gap-3 w-full"
+            >
+              {faqs.map((faq, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`q${i}`}
+                  className="rounded-xl border-0 overflow-hidden transition-colors duration-200"
+                >
+                  <AccordionTrigger
+                    className="cursor-pointer w-full px-5 sm:px-6 py-4 sm:py-5 text-sm sm:text-[15px] font-bold text-left hover:no-underline items-center gap-4 rounded-xl transition-colors duration-200 bg-[#F4F4F4] text-[#134C5F] data-[state=open]:bg-[#134C5F] data-[state=open]:text-white [&_[data-slot=accordion-trigger-icon]]:hidden"
+                  >
+                    <span className="flex-1 pr-3">{faq.q}</span>
+                    <PawPrint className="size-5 shrink-0" strokeWidth={2.5} aria-hidden />
+                  </AccordionTrigger>
+                  <AccordionContent
+                    className="px-5 sm:px-6 pb-5 pt-1 text-sm leading-relaxed bg-white"
+                    style={{ color: "#5A7A80" }}
+                  >
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+
+            {/* Right — image */}
+            <div className="relative w-full min-h-[320px] sm:min-h-[400px] lg:min-h-[520px] rounded-3xl overflow-hidden shadow-lg">
+              <Image
+                src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=900&q=80"
+                alt="Person bonding with their emotional support dog"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority={false}
+              />
+              {/* subtle brand tint overlay */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: `linear-gradient(135deg, ${TEAL_DARK}15 0%, transparent 60%)` }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="relative pt-16 sm:pt-24 pb-20 sm:pb-28 overflow-hidden" style={{
+        background: `linear-gradient(135deg, ${TEAL_DEEP} 0%, ${TEAL_DARK} 50%, ${TEAL} 100%)`,
+      }}>
+        <div style={{
+          position: "absolute", top: 0, right: 0, width: 500, height: 500, borderRadius: "50%",
+          background: `radial-gradient(circle, ${GOLD}30 0%, transparent 65%)`,
+          transform: "translate(30%, -30%)", pointerEvents: "none",
+        }} />
+        <div style={{
+          position: "absolute", inset: 0, opacity: 0.04,
+          backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
+          backgroundSize: "28px 28px", pointerEvents: "none",
+        }} />
+        <div className="relative z-10 text-center max-w-3xl mx-auto px-4">
+          <div className="text-5xl mb-5">🐾</div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ fontFamily: "var(--font-outfit)" }}>
+            Start Your ESA Evaluation Today
           </h2>
-          <p className="text-white/75 mb-6 max-w-md mx-auto">
-            If you believe an Emotional Support Animal may be appropriate for your situation,
-            you can begin a professional evaluation today.
+          <p className="text-white/60 mb-8 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+            Connect with a licensed mental health professional and take the first step toward getting the
+            emotional support animal accommodation you may qualify for.
           </p>
-          <Button className="bg-[#c9a227] hover:bg-[#efbf2f] text-white font-bold px-10 py-3 h-auto rounded-xl text-base shadow-md transition-transform hover:scale-105">
-            Start Your ESA Evaluation
-          </Button>
-          <p className="text-white/40 text-xs mt-4 italic">
-            ESA eligibility is determined by a licensed mental health professional following a clinical assessment.
-            Approval is not guaranteed.
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button className="btn-hover-gold-line h-13 px-10 text-white font-bold rounded-full text-sm border-0 gap-2 hover:scale-[1.03] transition-all"
+              style={{ background: `linear-gradient(135deg, ${GOLD}, #E0B830)`, boxShadow: `0 10px 30px ${GOLD}55` }}>
+              Begin Your Evaluation <ArrowRight className="size-4" />
+            </Button>
+            <Button variant="outline" className="h-13 px-10 rounded-full font-semibold text-sm"
+              style={{ borderColor: "rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.85)", background: "rgba(255,255,255,0.08)" }}>
+              Learn More About ESAs
+            </Button>
+          </div>
+          <p className="text-white/30 text-xs mt-6">
+            Only charged after evaluation completion · HIPAA-compliant · 50 States
           </p>
         </div>
-      </div>
-    </section>
+
+        {/* Curved bottom wave into light page background */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none" style={{ lineHeight: 0 }}>
+          <svg
+            viewBox="0 0 1440 80"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full block"
+            preserveAspectRatio="none"
+            style={{ height: 80 }}
+            aria-hidden
+          >
+            <path
+              d="M0,30 C360,75 1080,5 1440,35 L1440,80 L0,80 Z"
+              fill="#F0F8F9"
+            />
+          </svg>
+        </div>
+      </section>
+
+      {/* Light gap between CTA and footer */}
+      <div className="h-12 sm:h-16" style={{ background: "#F0F8F9" }} />
+    </>
   );
 }

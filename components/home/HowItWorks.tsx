@@ -1,70 +1,79 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { CalendarDays, MessageCircle, FileCheck } from "lucide-react";
+import { CalendarDays, MessageCircle, FileCheck, ArrowRight } from "lucide-react";
+
+const TEAL      = "#1D7080";
+const TEAL_DARK = "#134C5F";
+const GOLD      = "#C9A227";
 
 const steps = [
-  {
-    icon: CalendarDays,
-    step: "01",
-    title: "Set Up Your Appointment",
-    desc: "Create your account and choose a time that works for you to connect with a licensed mental health professional.",
-  },
-  {
-    icon: MessageCircle,
-    step: "02",
-    title: "Speak With Professionals",
-    desc: "During the consultation, the professional reviews your emotional and mental health concerns and assesses whether an emotional support animal is appropriate.",
-  },
-  {
-    icon: FileCheck,
-    step: "03",
-    title: "Clinical Determination",
-    desc: "Following the professional evaluation, if deemed appropriate by the licensed professional, emotional support animal documentation is sent directly to your email.",
-  },
+  { icon: CalendarDays, step: "01", title: "Set Up Your Appointment",
+    desc: "Create your account and choose a time that works for you to connect with a licensed mental health professional.", gold: false },
+  { icon: MessageCircle, step: "02", title: "Speak With Professionals",
+    desc: "During the consultation, the professional reviews your emotional and mental health concerns and assesses whether an ESA is appropriate.", gold: true },
+  { icon: FileCheck, step: "03", title: "Clinical Determination",
+    desc: "If deemed appropriate, ESA documentation is sent directly to your email. If not, no documentation is issued.", gold: false },
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="bg-[#f7f9f8] py-20" id="how-it-works">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <Badge className="bg-[#134c5f]/10 text-[#134c5f] border-[#134c5f]/20 mb-4 text-xs uppercase tracking-widest">
-            Simple Process
-          </Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#134c5f]" style={{ fontFamily: "var(--font-outfit)" }}>
-            How Online ESA Evaluation Works?
+    <section id="how-it-works" className="py-16 sm:py-24 relative overflow-hidden" style={{ background: "#FFFFFF" }}>
+      <div style={{
+        position: "absolute", inset: 0, opacity: 0.025,
+        backgroundImage: "radial-gradient(circle at 1px 1px, #1D7080 1px, transparent 0)",
+        backgroundSize: "36px 36px", pointerEvents: "none",
+      }} />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: GOLD }}>Simple Process</p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold" style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}>
+            How Online ESA Evaluation Works
           </h2>
-          <p className="text-[#5a7080] mt-3 max-w-xl mx-auto">
+          <p className="mt-3 max-w-xl mx-auto text-sm leading-relaxed" style={{ color: "#5A7A80" }}>
             A simple 3-step process to complete your emotional support animal letter evaluation
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {steps.map(({ icon: Icon, step, title, desc }) => (
-            <Card key={step} className="relative border-2 border-[#efbf2f] bg-[#fdf7e7] rounded-3xl shadow-md hover:shadow-xl transition-all hover:-translate-y-1 overflow-visible">
-              {/* step badge */}
-              <div className="absolute -top-4 left-8 w-9 h-9 rounded-full bg-[#134c5f] flex items-center justify-center shadow-md">
-                <span className="text-white text-xs font-bold">{step}</span>
-              </div>
-              <CardContent className="p-8 pt-10 flex flex-col gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-[#134c5f]/10 flex items-center justify-center">
-                  <Icon className="size-7 text-[#134c5f]" />
+        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
+          {/* connector */}
+          <div className="hidden md:block absolute" style={{
+            top: "2rem", left: "calc(16.66% + 2.5rem)", right: "calc(16.66% + 2.5rem)",
+            height: 2, background: `linear-gradient(90deg, ${GOLD}, rgba(201,162,39,0.2))`,
+          }} />
+
+          {steps.map(({ icon: Icon, step, title, desc, gold }) => (
+            <div key={step} className="flex flex-col items-center text-center gap-5">
+              {/* icon */}
+              <div className="relative">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg" style={{
+                  background: gold
+                    ? `linear-gradient(135deg, ${GOLD}, #E0B830)`
+                    : `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})`,
+                }}>
+                  <Icon className="size-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-[#134c5f]" style={{ fontFamily: "var(--font-outfit)" }}>
-                  {title}
-                </h3>
-                <p className="text-[#5a7080] text-sm leading-relaxed">{desc}</p>
-              </CardContent>
-            </Card>
+                <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-black shadow"
+                  style={{ background: gold ? TEAL_DARK : GOLD }}>
+                  {step}
+                </div>
+              </div>
+              <div className="card-lift w-full rounded-2xl p-6 text-left" style={{
+                background: gold ? "#FDF3D0" : "#E6F4F6",
+                border: `1px solid ${gold ? `${GOLD}40` : `rgba(29,112,128,0.1)`}`,
+              }}>
+                <h3 className="text-lg font-bold mb-2" style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}>{title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#5A7A80" }}>{desc}</p>
+              </div>
+            </div>
           ))}
         </div>
 
-        <div className="text-center flex flex-col items-center gap-2">
-          <Button className="bg-[#134c5f] hover:bg-[#1d6e72] text-white px-10 py-3 h-auto rounded-xl text-base font-semibold shadow-md transition-transform hover:scale-105">
-            Start Your ESA Evaluation
+        <div className="text-center flex flex-col items-center gap-3">
+          <Button className="btn-hover-gold-line h-12 px-10 text-white font-bold rounded-full text-sm border-0 gap-2 hover:opacity-90 hover:scale-[1.02] transition-all"
+            style={{ background: `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})`, boxShadow: `0 8px 24px rgba(29,112,128,0.3)` }}>
+            Start Your ESA Evaluation <ArrowRight className="size-4" />
           </Button>
-          <p className="text-xs text-[#5a7080] italic">
+          <p className="text-xs italic" style={{ color: "#5A7A80" }}>
             We authorize your payment first, but only charge it after your evaluation is completed.
           </p>
         </div>

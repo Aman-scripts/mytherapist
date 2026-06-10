@@ -4,6 +4,7 @@ import Stats from "@/components/home/Stats";
 import HowItWorks from "@/components/home/HowItWorks";
 import Therapists from "@/components/home/Therapists";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
+import VideoTestimonials from "@/components/home/VideoTestimonials";
 import Testimonials from "@/components/home/Testimonials";
 import EsaInfo from "@/components/home/EsaInfo";
 import About from "@/components/home/About";
@@ -21,6 +22,7 @@ export default function Home() {
         <HowItWorks />
         <Therapists />
         <WhyChooseUs />
+        <VideoTestimonials />
         <Testimonials />
         <EsaInfo />
         <About />
