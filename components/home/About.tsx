@@ -73,13 +73,16 @@ export default function About() {
 
           {/* "As seen on" */}
           <div className="flex flex-col gap-8">
-            <div className="rounded-3xl p-8" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}>
-              <p className="text-white/35 text-xs font-bold tracking-widest uppercase text-center mb-7">As Seen In</p>
-              <div className="grid grid-cols-3 gap-4">
+            <div className="rounded-3xl p-5 sm:p-8" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <p className="text-white/35 text-xs font-bold tracking-widest uppercase text-center mb-6 sm:mb-7">As Seen In</p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
                 {brands.map((b) => (
-                  <div key={b} className="rounded-xl px-3 py-3 text-center text-white/50 text-xs font-bold uppercase tracking-wide transition-colors hover:text-white"
-                    style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                    {b}
+                  <div
+                    key={b}
+                    className="flex min-h-[48px] min-w-0 items-center justify-center rounded-xl px-2 py-2.5 sm:px-3 sm:py-3 text-center text-white/50 text-[10px] sm:text-xs font-bold uppercase tracking-normal transition-colors hover:text-white"
+                    style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
+                  >
+                    <span className="block w-full text-center leading-tight">{b}</span>
                   </div>
                 ))}
               </div>
