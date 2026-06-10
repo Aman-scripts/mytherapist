@@ -27,6 +27,7 @@ export default function Header() {
   const [stateOpen, setStateOpen] = useState(false);
   const [bannerOpen, setBannerOpen] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileStateOpen, setMobileStateOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -173,7 +174,13 @@ export default function Header() {
               </a>
 
               {/* Mobile hamburger */}
-              <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+              <Sheet
+                open={mobileOpen}
+                onOpenChange={(open) => {
+                  setMobileOpen(open);
+                  if (!open) setMobileStateOpen(false);
+                }}
+              >
                 <SheetTrigger asChild>
                   <button
                     type="button"
@@ -225,15 +232,54 @@ export default function Header() {
                       <p className="text-[10px] font-bold uppercase tracking-widest px-3 pt-1 pb-2" style={{ color: "#9CA3AF" }}>
                         Navigation
                       </p>
-                      <a
-                        href="#hero"
-                        onClick={() => setMobileOpen(false)}
-                        className="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium rounded-xl transition-colors hover:bg-gray-50"
+                      <button
+                        type="button"
+                        onClick={() => setMobileStateOpen((open) => !open)}
+                        className="flex w-full items-center justify-between gap-2.5 px-3 py-2.5 text-sm font-medium rounded-xl transition-colors hover:bg-gray-50"
                         style={{ color: TEAL_DARK }}
+                        aria-expanded={mobileStateOpen}
                       >
-                        <MapPin className="size-4 shrink-0" style={{ color: GOLD }} />
-                        ESA by State
-                      </a>
+                        <span className="flex items-center gap-2.5">
+                          <MapPin className="size-4 shrink-0" style={{ color: GOLD }} />
+                          ESA by State
+                        </span>
+                        <ChevronDown
+                          className={`size-4 shrink-0 transition-transform duration-200 ${mobileStateOpen ? "rotate-180" : ""}`}
+                          style={{ color: TEAL_DARK }}
+                        />
+                      </button>
+                      {mobileStateOpen && (
+                        <div
+                          className="ml-3 mr-1 mb-1 flex flex-col gap-0.5 rounded-xl p-2"
+                          style={{ background: TEAL_LIGHT }}
+                        >
+                          {esaByState.map((s) => (
+                            <a
+                              key={s}
+                              href="#hero"
+                              onClick={() => {
+                                setMobileOpen(false);
+                                setMobileStateOpen(false);
+                              }}
+                              className="px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-white/70"
+                              style={{ color: TEAL_DARK }}
+                            >
+                              {s}
+                            </a>
+                          ))}
+                          <a
+                            href="#hero"
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setMobileStateOpen(false);
+                            }}
+                            className="px-3 py-2 text-sm font-bold rounded-lg transition-colors hover:bg-white/70"
+                            style={{ color: TEAL }}
+                          >
+                            View all 50 States →
+                          </a>
+                        </div>
+                      )}
                       {navLinks.map((l) => (
                         <a
                           key={l.label}

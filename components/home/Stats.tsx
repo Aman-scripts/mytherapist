@@ -143,7 +143,7 @@ export default function Stats() {
                 boxShadow: "0 4px 20px rgba(29,112,128,0.06)",
               }}
             >
-              <div className="absolute right-2 bottom-0 font-black text-8xl leading-none pointer-events-none select-none"
+              <div className="absolute right-2 top-0 font-black text-8xl leading-none pointer-events-none select-none"
                 style={{
                   color: gold ? GOLD : TEAL,
                   opacity: gold ? 0.16 : 0.1,
