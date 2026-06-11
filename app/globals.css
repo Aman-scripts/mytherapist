@@ -221,6 +221,24 @@
   transform: scaleX(0.4);
 }
 
+/* ── Hero state dropdown scrollbar ── */
+.hero-state-list {
+  scrollbar-width: thin;
+  scrollbar-color: #1D7080 rgba(29, 112, 128, 0.08);
+}
+.hero-state-list::-webkit-scrollbar {
+  width: 6px;
+}
+.hero-state-list::-webkit-scrollbar-track {
+  background: rgba(29, 112, 128, 0.06);
+  border-radius: 999px;
+  margin: 4px 0;
+}
+.hero-state-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #134C5F, #1D7080);
+  border-radius: 999px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .float,
   .float-delayed,

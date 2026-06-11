@@ -1,6 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { MapPin, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const US_STATES = [
   "Alabama","Alaska","Arizona","Arkansas","California","Colorado",
@@ -15,58 +24,58 @@ const US_STATES = [
   "West Virginia","Wisconsin","Wyoming","Puerto Rico",
 ];
 
+const TEAL_DARK = "#134C5F";
+
 export default function HeroStateForm() {
   const [state, setState] = useState("");
 
   return (
     <div className="relative z-20 grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-xl items-stretch">
-      <label htmlFor="hero-state-select" className="sr-only">
-        Select your state
-      </label>
-      <select
-        id="hero-state-select"
-        name="state"
-        value={state}
-        onChange={(e) => setState(e.target.value)}
-        aria-label="Select your state"
-        className="h-12 min-h-12 w-full rounded-full border-0 px-4 text-sm font-semibold shadow-lg appearance-none cursor-pointer focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-white/40"
-        style={{
-          background: "rgba(255,255,255,0.96)",
-          color: "#134C5F",
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134C5F' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "right 1rem center",
-          paddingRight: "2.75rem",
-        }}
-      >
-        <option value="" disabled>
-          Select your state…
-        </option>
-        {US_STATES.map((s) => (
-          <option key={s} value={s}>
-            {s}
-          </option>
-        ))}
-      </select>
-      <button
-        type="button"
-        className="btn-hover-gold-line h-12 min-h-12 w-full font-bold rounded-full text-white border-0 gap-2 inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-white/40"
-      >
-        Get Started
-        <svg
-          className="size-4 shrink-0"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden
+      <Select onValueChange={setState} value={state}>
+        <SelectTrigger
+          id="hero-state-select"
+          aria-label="Select your state"
+          className="!h-12 min-h-12 !w-full !justify-start border-0 px-4 py-0 font-semibold rounded-full text-sm text-left shadow-lg gap-2 focus-visible:ring-white/40 [&_svg]:text-[#134C5F] *:data-[slot=select-value]:flex-1 *:data-[slot=select-value]:justify-start *:data-[slot=select-value]:text-left [&>svg:last-child]:ml-auto"
+          style={{
+            height: 48,
+            minHeight: 48,
+            background: "rgba(255,255,255,0.97)",
+            color: TEAL_DARK,
+            boxShadow: "0 8px 24px rgba(13,51,65,0.12)",
+          }}
         >
-          <path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" />
-        </svg>
-      </button>
+          <MapPin className="size-4 shrink-0 opacity-70" style={{ color: TEAL_DARK }} aria-hidden />
+          <SelectValue placeholder="Select your state…" />
+        </SelectTrigger>
+        <SelectContent
+          position="popper"
+          align="start"
+          sideOffset={8}
+          className="hero-state-list z-[9999] max-h-64 w-[var(--radix-select-trigger-width)] rounded-2xl border-0 p-2 shadow-xl bg-white/98"
+          style={{
+            border: "1px solid rgba(29,112,128,0.14)",
+            boxShadow: "0 20px 50px rgba(13,51,65,0.18), 0 8px 20px rgba(29,112,128,0.1)",
+          }}
+        >
+          {US_STATES.map((s) => (
+            <SelectItem
+              key={s}
+              value={s}
+              className="cursor-pointer rounded-xl py-2.5 pl-3 pr-8 text-sm font-medium text-[#134C5F] focus:bg-[#C9A227] focus:text-white data-[highlighted]:bg-[#C9A227] data-[highlighted]:text-white [&_svg]:text-white"
+            >
+              {s}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+
+      <Button
+        type="button"
+        className="btn-hover-gold-line !h-12 min-h-12 w-full py-0 font-bold rounded-full border-0 gap-2 justify-center focus-visible:ring-white/40"
+        style={{ height: 48, minHeight: 48 }}
+      >
+        Get Started <ArrowRight className="size-4" aria-hidden />
+      </Button>
     </div>
   );
 }
