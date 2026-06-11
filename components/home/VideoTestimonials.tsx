@@ -10,7 +10,7 @@ export default function VideoTestimonials() {
     <section id="video-testimonials" className="py-16 sm:py-24" style={{ background: "#FFFFFF" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-12">
-          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: GOLD }}>
+          <p className="text-xs sm:text-sm font-bold tracking-widest uppercase mb-2 sm:mb-3" style={{ color: GOLD }}>
             Client Pet Videos
           </p>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold"

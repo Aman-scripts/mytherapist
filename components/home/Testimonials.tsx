@@ -40,7 +40,7 @@ export default function Testimonials() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-14">
-          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: "#E0B830" }}>Client Stories</p>
+          <p className="text-xs sm:text-sm font-bold tracking-widest uppercase mb-2 sm:mb-3" style={{ color: "#E0B830" }}>Client Stories</p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white" style={{ fontFamily: "var(--font-outfit)" }}>
             What Our Clients Say
           </h2>

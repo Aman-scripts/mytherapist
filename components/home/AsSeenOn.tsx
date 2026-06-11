@@ -156,7 +156,7 @@ export default function AsSeenOn() {
       <div className="flex items-center justify-center gap-4 mb-8 sm:mb-10 px-4">
         <span className="h-px w-12 sm:w-20" style={{ background: GOLD }} aria-hidden />
         <p
-          className="text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase shrink-0"
+          className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase shrink-0"
           style={{ color: TEAL_DARK }}
         >
           As Seen On

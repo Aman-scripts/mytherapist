@@ -62,7 +62,7 @@ function FooterLinkList({ links }: { links: { label: string; href: string }[] })
 
 function ColumnHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: GOLD, fontFamily: "var(--font-outfit)" }}>
+    <h3 className="text-xs sm:text-sm font-bold tracking-widest uppercase mb-5" style={{ color: GOLD, fontFamily: "var(--font-outfit)" }}>
       {children}
     </h3>
   );

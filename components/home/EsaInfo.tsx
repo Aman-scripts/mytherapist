@@ -34,7 +34,7 @@ export default function EsaInfo() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
-              <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: GOLD }}>About ESAs</p>
+              <p className="text-xs sm:text-sm font-bold tracking-widest uppercase mb-2 sm:mb-3" style={{ color: GOLD }}>About ESAs</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold mb-5" style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}>
                 What is an Emotional Support Animal?
               </h2>
@@ -102,7 +102,7 @@ export default function EsaInfo() {
       <section id="benefits" className="py-16 sm:py-24" style={{ background: "#FFFFFF" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: GOLD }}>Benefits</p>
+            <p className="text-xs sm:text-sm font-bold tracking-widest uppercase mb-2 sm:mb-3" style={{ color: GOLD }}>Benefits</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold" style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}>
               Benefits of Having an ESA
             </h2>

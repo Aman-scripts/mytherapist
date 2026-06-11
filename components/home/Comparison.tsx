@@ -36,7 +36,7 @@ export default function Comparison() {
     <section id="comparison" className="py-16 sm:py-24" style={{ background: "#F0F8F9" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: "#8A6F12" }}>Comparison</p>
+          <p className="text-xs sm:text-sm font-bold tracking-widest uppercase mb-2 sm:mb-3" style={{ color: "#8A6F12" }}>Comparison</p>
           <h2 className="text-3xl sm:text-4xl font-extrabold" style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}>
             How We Compare
           </h2>

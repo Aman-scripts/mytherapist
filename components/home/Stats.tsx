@@ -51,11 +51,11 @@ export default function Stats() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Percentage stats */}
         <div className="text-center mb-6 sm:mb-8">
-          <p className="text-[9px] font-bold tracking-widest uppercase mb-1.5" style={{ color: "#8A6F12" }}>By The Numbers</p>
-          <h2 className="text-xl sm:text-2xl font-extrabold" style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}>
+          <p className="text-xs sm:text-sm font-bold tracking-widest uppercase mb-2" style={{ color: "#8A6F12" }}>By The Numbers</p>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold" style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}>
             Your ESA Journey Starts Here
           </h2>
-          <p className="mt-1.5 max-w-lg mx-auto text-xs leading-relaxed" style={{ color: "#4A656B" }}>
+          <p className="mt-2 max-w-lg mx-auto text-sm sm:text-base leading-relaxed" style={{ color: "#4A656B" }}>
             See how emotional support animals transform lives for thousands of people nationwide.
           </p>
         </div>

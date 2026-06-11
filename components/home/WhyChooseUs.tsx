@@ -92,7 +92,7 @@ export default function WhyChooseUs() {
 
           {/* Left panel */}
           <div className="lg:col-span-5 lg:sticky lg:top-28 self-start min-w-0">
-            <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: GOLD }}>Why Choose Us</p>
+            <p className="text-xs sm:text-sm font-bold tracking-widest uppercase mb-2 sm:mb-3" style={{ color: GOLD }}>Why Choose Us</p>
             <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold mb-5 leading-tight" style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}>
               What Makes Us{" "}
               <span className="relative inline-block">

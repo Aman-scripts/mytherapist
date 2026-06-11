@@ -33,7 +33,7 @@ export default function About() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
-            <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: GOLD }}>Our Story</p>
+            <p className="text-xs sm:text-sm font-bold tracking-widest uppercase mb-2 sm:mb-3" style={{ color: GOLD }}>Our Story</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-5" style={{ fontFamily: "var(--font-outfit)" }}>
               About My ESA Therapist
             </h2>
@@ -74,7 +74,7 @@ export default function About() {
           {/* "As seen on" */}
           <div className="flex flex-col gap-8">
             <div className="rounded-3xl p-5 sm:p-8" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}>
-              <p className="text-white/35 text-xs font-bold tracking-widest uppercase text-center mb-6 sm:mb-7">As Seen In</p>
+              <p className="text-white/50 text-xs sm:text-sm font-bold tracking-widest uppercase text-center mb-6 sm:mb-7">As Seen In</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
                 {brands.map((b) => (
                   <div
