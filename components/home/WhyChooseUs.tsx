@@ -160,11 +160,8 @@ export default function WhyChooseUs() {
               }}
             >
               <Button
-                className="btn-hover-gold-line h-auto min-h-12 sm:min-h-14 px-4 sm:px-6 py-3.5 text-white font-bold rounded-none rounded-t-2xl text-xs sm:text-sm border-0 gap-2 hover:opacity-90 w-full whitespace-normal text-center leading-snug"
-                style={{
-                  background: `linear-gradient(135deg, ${GOLD}, #E0B830)`,
-                  boxShadow: "none",
-                }}
+                className="btn-hover-gold-line h-auto min-h-12 sm:min-h-14 px-4 sm:px-6 py-3.5 text-white font-bold rounded-none rounded-t-2xl text-xs sm:text-sm border-0 gap-2 w-full whitespace-normal text-center leading-snug"
+                style={{ boxShadow: "none" }}
               >
                 Start Your ESA Evaluation <ArrowRight className="size-4 shrink-0" />
               </Button>

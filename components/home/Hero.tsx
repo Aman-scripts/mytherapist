@@ -166,13 +166,13 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* ── RIGHT: Glass card ── */}
+          {/* ── RIGHT: Frosted card — opaque enough for readable text on any bg ── */}
           <div className="relative flex justify-center lg:justify-end mt-4 lg:mt-0">
             <div className="float relative w-full max-w-sm rounded-3xl p-7" style={{
-              background: "rgba(255,255,255,0.1)",
-              backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
-              border: "1px solid rgba(255,255,255,0.14)",
-              boxShadow: "0 24px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
+              background: "linear-gradient(145deg, rgba(255,255,255,0.97) 0%, rgba(240,248,249,0.94) 100%)",
+              backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(255,255,255,0.9)",
+              boxShadow: "0 24px 60px rgba(13,51,65,0.18), 0 8px 24px rgba(29,112,128,0.12), inset 0 1px 0 rgba(255,255,255,0.8)",
             }}>
               {/* Card header */}
               <div className="flex items-center gap-3 mb-7">
@@ -181,8 +181,10 @@ export default function Hero() {
                   <ShieldCheck className="size-6 text-white" />
                 </div>
                 <div>
-                  <div className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-outfit)" }}>Your ESA Journey</div>
-                  <div className="text-white/70 text-xs">3 simple steps</div>
+                  <div className="font-bold text-sm" style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}>
+                    Your ESA Journey
+                  </div>
+                  <div className="text-xs font-medium" style={{ color: "#5A7A80" }}>3 simple steps</div>
                 </div>
               </div>
 
@@ -198,18 +200,18 @@ export default function Hero() {
                       style={{ background: `linear-gradient(135deg, ${GOLD}, ${GOLD_BRT})` }}>
                       {step.num}
                     </div>
-                    {i < 2 && <div className="w-px h-5" style={{ background: "rgba(255,255,255,0.15)" }} />}
+                    {i < 2 && <div className="w-px h-5" style={{ background: "rgba(29,112,128,0.2)" }} />}
                   </div>
                   <div className="pt-1">
-                    <div className="text-white text-sm font-semibold">{step.label}</div>
-                    <div className="text-white/70 text-xs">{step.sub}</div>
+                    <div className="text-sm font-semibold" style={{ color: TEAL_DARK }}>{step.label}</div>
+                    <div className="text-xs font-medium" style={{ color: "#5A7A80" }}>{step.sub}</div>
                   </div>
                 </div>
               ))}
 
               {/* Mini stats */}
               <div className="mt-6 pt-5 grid grid-cols-3 gap-3 text-center"
-                style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+                style={{ borderTop: "1px solid rgba(29,112,128,0.12)" }}>
                 {[{ v: "10K+", l: "Evaluations" }, { v: "4.9★", l: "Rating" }, { v: "50", l: "States" }].map((s) => (
                   <div key={s.l}>
                     <div className="text-lg font-extrabold" style={{
@@ -217,7 +219,7 @@ export default function Hero() {
                       WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
                       fontFamily: "var(--font-outfit)",
                     }}>{s.v}</div>
-                    <div className="text-white/70 text-[10px] font-medium">{s.l}</div>
+                    <div className="text-[10px] font-semibold" style={{ color: "#5A7A80" }}>{s.l}</div>
                   </div>
                 ))}
               </div>

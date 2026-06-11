@@ -117,8 +117,7 @@ export default function HowItWorks() {
         </div>
 
         <div className="text-center flex flex-col items-center gap-3">
-          <Button className="btn-hover-gold-line h-12 px-10 text-white font-bold rounded-full text-sm border-0 gap-2 hover:opacity-90 hover:scale-[1.02] transition-all"
-            style={{ background: `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})`, boxShadow: `0 8px 24px rgba(29,112,128,0.3)` }}>
+          <Button className="btn-hover-gold-line btn-teal h-12 px-10 text-white font-bold rounded-full text-sm border-0 gap-2 hover:scale-[1.02] transition-all">
             Start Your ESA Evaluation <ArrowRight className="size-4" />
           </Button>
           <p className="text-xs italic" style={{ color: "#5A7A80" }}>

@@ -203,15 +203,7 @@ export default function Therapists() {
 
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button
-                    className="btn-hover-gold-line flex-1 !h-12 min-h-12 text-white font-bold rounded-xl text-sm sm:text-base border-0 gap-2 px-5 shadow-md"
-                    style={{
-                      background: t.useGold
-                        ? `linear-gradient(135deg, ${GOLD}, #E0B830)`
-                        : `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})`,
-                      boxShadow: t.useGold
-                        ? `0 6px 20px ${GOLD}44`
-                        : "0 6px 20px rgba(29,112,128,0.25)",
-                    }}
+                    className={`btn-hover-gold-line ${t.useGold ? "" : "btn-teal"} flex-1 !h-12 min-h-12 text-white font-bold rounded-xl text-sm sm:text-base border-0 gap-2 px-5 shadow-md`}
                   >
                     Book Appointment <ArrowRight className="size-4 shrink-0" />
                   </Button>

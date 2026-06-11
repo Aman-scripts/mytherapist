@@ -27,8 +27,7 @@ export default function VideoTestimonials() {
         <div className="text-center mt-8">
           <Button
             asChild
-            className="btn-hover-gold-line h-11 px-8 font-bold rounded-full text-sm border-0 text-white hover:opacity-90"
-            style={{ background: `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})`, boxShadow: "0 6px 20px rgba(29,112,128,0.28)" }}
+            className="btn-hover-gold-line btn-teal h-11 px-8 font-bold rounded-full text-sm border-0 text-white"
           >
             <a href="#reviews">Read Written Reviews</a>
           </Button>

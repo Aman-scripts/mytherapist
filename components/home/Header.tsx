@@ -174,12 +174,10 @@ export default function Header() {
               </a>
 
               {/* CTA — hidden on xs */}
-              <a href="#hero"
-                className="btn-hover-gold-line hidden sm:inline-flex items-center gap-1.5 h-9 px-4 rounded-lg text-sm font-bold text-white transition-all hover:opacity-90 hover:shadow-lg overflow-hidden"
-                style={{
-                  background: `linear-gradient(135deg, ${GOLD} 0%, #E0B830 100%)`,
-                  boxShadow: `0 2px 10px ${GOLD}45`,
-                }}>
+              <a
+                href="#hero"
+                className="btn-hover-gold-line btn-compact hidden sm:inline-flex items-center gap-1.5 h-9 px-4 rounded-lg text-sm font-bold shrink-0 whitespace-nowrap overflow-hidden"
+              >
                 Start ESA Evaluation
               </a>
 
@@ -318,8 +316,7 @@ export default function Header() {
                       <a
                         href="#hero"
                         onClick={() => setMobileOpen(false)}
-                        className="btn-hover-gold-line w-full h-11 rounded-xl text-white text-sm font-bold transition-opacity hover:opacity-90 overflow-hidden flex items-center justify-center"
-                        style={{ background: `linear-gradient(135deg, ${GOLD}, #E0B830)` }}
+                        className="btn-hover-gold-line w-full h-11 rounded-xl text-sm font-bold overflow-hidden flex items-center justify-center"
                       >
                         Start ESA Evaluation
                       </a>

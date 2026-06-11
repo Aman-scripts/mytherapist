@@ -107,8 +107,7 @@ export default function FAQ() {
             emotional support animal accommodation you may qualify for.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button className="btn-hover-gold-line h-13 px-10 text-white font-bold rounded-full text-sm border-0 gap-2 hover:scale-[1.03] transition-all"
-              style={{ background: `linear-gradient(135deg, ${GOLD}, #E0B830)`, boxShadow: `0 10px 30px ${GOLD}55` }}>
+            <Button className="btn-hover-gold-line h-13 px-10 text-white font-bold rounded-full text-sm border-0 gap-2 hover:scale-[1.03] transition-all">
               Begin Your Evaluation <ArrowRight className="size-4" />
             </Button>
             <Button variant="outline" className="h-13 px-10 rounded-full font-semibold text-sm"

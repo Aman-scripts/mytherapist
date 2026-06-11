@@ -15,9 +15,6 @@ const US_STATES = [
   "West Virginia","Wisconsin","Wyoming","Puerto Rico",
 ];
 
-const GOLD = "#C9A227";
-const GOLD_BRT = "#E0B830";
-
 export default function HeroStateForm() {
   const [state, setState] = useState("");
 
@@ -54,10 +51,6 @@ export default function HeroStateForm() {
       <button
         type="button"
         className="btn-hover-gold-line h-12 min-h-12 w-full font-bold rounded-full text-white border-0 gap-2 inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-white/40"
-        style={{
-          background: `linear-gradient(135deg, ${GOLD}, ${GOLD_BRT})`,
-          boxShadow: `0 8px 24px ${GOLD}55`,
-        }}
       >
         Get Started
         <svg

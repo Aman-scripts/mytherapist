@@ -50,8 +50,7 @@ export default function EsaInfo() {
               </p>
               <div className="flex flex-nowrap items-stretch gap-2 sm:gap-3 w-full">
                 <Button
-                  className="btn-hover-gold-line flex-1 min-w-0 h-10 sm:h-11 px-3 sm:px-7 text-white font-bold rounded-full text-xs sm:text-sm border-0 gap-1.5 sm:gap-2 hover:opacity-90 whitespace-nowrap"
-                  style={{ background: `linear-gradient(135deg, ${GOLD}, #E0B830)`, boxShadow: `0 6px 20px ${GOLD}44` }}
+                  className="btn-hover-gold-line flex-1 min-w-0 h-10 sm:h-11 px-3 sm:px-7 text-white font-bold rounded-full text-xs sm:text-sm border-0 gap-1.5 sm:gap-2 whitespace-nowrap"
                 >
                   <span className="truncate">Learn About ESAs</span>
                   <ArrowRight className="size-3.5 sm:size-4 shrink-0" />
@@ -136,8 +135,7 @@ export default function EsaInfo() {
           </div>
 
           <div className="text-center">
-            <Button className="btn-hover-gold-line h-12 px-10 text-white font-bold rounded-full text-sm border-0 gap-2 hover:opacity-90"
-              style={{ background: `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})`, boxShadow: "0 8px 24px rgba(29,112,128,0.3)" }}>
+            <Button className="btn-hover-gold-line btn-teal h-12 px-10 text-white font-bold rounded-full text-sm border-0 gap-2">
               Start Your ESA Evaluation <ArrowRight className="size-4" />
             </Button>
           </div>

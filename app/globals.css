@@ -171,10 +171,32 @@
   box-shadow: 0 16px 40px rgba(29,112,128,0.15);
 }
 
-/* ── CTA button — gold accent line on hover (not click) ── */
+/* ── CTA button — gold default, teal on hover (inverse for .btn-teal) ── */
 .btn-hover-gold-line {
   position: relative;
   overflow: hidden;
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #C9A227 0%, #E0B830 100%) !important;
+  box-shadow: 0 8px 24px rgba(201, 162, 39, 0.33);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+}
+.btn-hover-gold-line.btn-teal {
+  background: linear-gradient(135deg, #134C5F 0%, #1D7080 100%) !important;
+  box-shadow: 0 8px 24px rgba(29, 112, 128, 0.3);
+}
+.btn-hover-gold-line.btn-compact {
+  box-shadow: 0 2px 10px rgba(201, 162, 39, 0.28);
+}
+.btn-hover-gold-line.btn-teal.btn-compact {
+  box-shadow: 0 2px 10px rgba(29, 112, 128, 0.25);
+}
+.btn-hover-gold-line:hover {
+  background: linear-gradient(135deg, #134C5F 0%, #1D7080 100%) !important;
+  box-shadow: 0 10px 28px rgba(29, 112, 128, 0.38) !important;
+}
+.btn-hover-gold-line.btn-teal:hover {
+  background: linear-gradient(135deg, #C9A227 0%, #E0B830 100%) !important;
+  box-shadow: 0 10px 28px rgba(201, 162, 39, 0.4) !important;
 }
 .btn-hover-gold-line::after {
   content: "";
@@ -184,7 +206,7 @@
   bottom: 7px;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent, #C9A227 25%, #E0B830 50%, #C9A227 75%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55) 25%, #ffffff 50%, rgba(255, 255, 255, 0.55) 75%, transparent);
   opacity: 0;
   transform: scaleX(0.4);
   transition: opacity 0.25s ease, transform 0.25s ease;

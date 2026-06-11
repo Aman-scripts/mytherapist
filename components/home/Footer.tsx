@@ -127,11 +127,7 @@ export default function Footer() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button
-              className="btn-hover-gold-line h-12 px-10 text-white font-bold rounded-full text-sm border-0 gap-2 hover:opacity-90"
-              style={{
-                background: `linear-gradient(135deg, ${GOLD}, #E0B830)`,
-                boxShadow: `0 10px 30px ${GOLD}55`,
-              }}>
+              className="btn-hover-gold-line h-12 px-10 text-white font-bold rounded-full text-sm border-0 gap-2">
               Apply Your ESA Letter <ArrowRight className="size-4" />
             </Button>
             <Button
