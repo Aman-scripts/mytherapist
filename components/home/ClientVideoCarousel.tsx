@@ -153,7 +153,7 @@ export default function ClientVideoCarousel({ variant = "light", videos = client
   return (
     <div>
       {/* Mobile — finger-swipe horizontal scroll */}
-      <div className="sm:hidden -mx-4 px-4">
+      <div className="sm:hidden -mx-4 px-4" role="region" aria-label="Client video testimonials carousel">
         <p className="text-center text-[11px] font-medium mb-3" style={{ color: isDark ? "rgba(255,255,255,0.45)" : "#5A7A80" }}>
           Swipe to browse videos
         </p>

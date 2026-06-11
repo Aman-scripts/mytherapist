@@ -102,6 +102,10 @@
 @layer base {
   html { scroll-behavior: smooth; }
   * { @apply border-border outline-ring/50; }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
   button:not(:disabled),
   [type="button"]:not(:disabled),
   [type="submit"]:not(:disabled),
@@ -136,8 +140,10 @@
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-7px); }
 }
-.float         { animation: float 4s ease-in-out infinite; }
-.float-delayed { animation: float-delayed 5s ease-in-out infinite 1.2s; }
+@media (min-width: 1024px) {
+  .float         { animation: float 4s ease-in-out infinite; }
+  .float-delayed { animation: float-delayed 5s ease-in-out infinite 1.2s; }
+}
 
 @keyframes ring-spin {
   from { transform: rotate(0deg); }
@@ -188,11 +194,21 @@
   opacity: 1;
   transform: scaleX(1);
 }
-.btn-hover-gold-line:active::after,
-.btn-hover-gold-line:focus::after,
-.btn-hover-gold-line:focus-visible::after {
+.btn-hover-gold-line:active::after {
   opacity: 0;
   transform: scaleX(0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float,
+  .float-delayed,
+  .ring-spin,
+  .animate-marquee {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* ── Mobile video carousel scroll ── */

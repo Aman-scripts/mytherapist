@@ -116,7 +116,7 @@ export default function FAQ() {
               Learn More About ESAs
             </Button>
           </div>
-          <p className="text-white/30 text-xs mt-6">
+          <p className="text-white/65 text-xs mt-6">
             Only charged after evaluation completion · HIPAA-compliant · 50 States
           </p>
         </div>

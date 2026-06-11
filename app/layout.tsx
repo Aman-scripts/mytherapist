@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Lato } from "next/font/google";
+import { preload } from "react-dom";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -11,7 +12,7 @@ const outfit = Outfit({
 const lato = Lato({
   variable: "--font-lato",
   subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -26,9 +27,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  preload("/images/hero-person-pet-care.jpg", {
+    as: "image",
+    fetchPriority: "high",
+  });
+
   return (
     <html lang="en" className={`${outfit.variable} ${lato.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:shadow-lg"
+          style={{ color: "#134C5F" }}
+        >
+          Skip to main content
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

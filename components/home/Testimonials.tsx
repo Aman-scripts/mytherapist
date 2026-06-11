@@ -40,11 +40,11 @@ export default function Testimonials() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-14">
-          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: GOLD }}>Client Stories</p>
+          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: "#E0B830" }}>Client Stories</p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white" style={{ fontFamily: "var(--font-outfit)" }}>
             What Our Clients Say
           </h2>
-          <p className="text-white/55 mt-3 max-w-md mx-auto text-sm">
+          <p className="text-white/75 mt-3 max-w-md mx-auto text-sm">
             Read stories from people whose lives were improved through our ESA evaluations.
           </p>
         </div>
@@ -56,10 +56,10 @@ export default function Testimonials() {
               border: r.featured ? `1px solid ${GOLD}55` : "1px solid rgba(255,255,255,0.1)",
               backdropFilter: "blur(8px)",
             }}>
-              <Quote className="size-8 absolute top-4 right-5" style={{ color: `${GOLD}55` }} fill="currentColor" />
-              <div className="flex items-center gap-1">
+              <Quote className="size-8 absolute top-4 right-5" style={{ color: `${GOLD}55` }} fill="currentColor" aria-hidden />
+              <div className="flex items-center gap-1" role="img" aria-label={`${r.rating} out of 5 stars`}>
                 {Array.from({ length: r.rating }).map((_, i) => (
-                  <Star key={i} className="size-4 shrink-0" style={{ fill: GOLD, color: GOLD }} />
+                  <Star key={i} className="size-4 shrink-0" style={{ fill: GOLD, color: GOLD }} aria-hidden />
                 ))}
               </div>
               <p className="text-white/80 text-sm leading-relaxed flex-1">&ldquo;{r.text}&rdquo;</p>
@@ -71,7 +71,7 @@ export default function Testimonials() {
                 </Avatar>
                 <div>
                   <div className="text-white text-sm font-semibold">{r.name}</div>
-                  <div className="text-white/45 text-xs">{r.state}</div>
+                  <div className="text-white/70 text-xs">{r.state}</div>
                 </div>
               </div>
             </div>
@@ -79,13 +79,13 @@ export default function Testimonials() {
         </div>
 
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5" role="img" aria-label="4.9 out of 5 stars">
             {[1, 2, 3, 4, 5].map((i) => (
-              <Star key={i} className="size-6 shrink-0" style={{ fill: GOLD, color: GOLD }} />
+              <Star key={i} className="size-6 shrink-0" style={{ fill: GOLD, color: GOLD }} aria-hidden />
             ))}
           </div>
           <span className="text-white text-lg font-bold">4.9 out of 5</span>
-          <span className="text-white/45 text-sm">based on 1,200+ verified reviews</span>
+          <span className="text-white/70 text-sm">based on 1,200+ verified reviews</span>
         </div>
       </div>
 

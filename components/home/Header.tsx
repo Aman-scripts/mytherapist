@@ -81,7 +81,6 @@ export default function Header() {
                 width={44}
                 height={44}
                 className="rounded-full group-hover:scale-105 transition-transform duration-200"
-                priority
               />
               <div className="leading-tight hidden sm:block">
                 <div className="font-extrabold text-[15px] leading-none tracking-tight"
@@ -96,26 +95,36 @@ export default function Header() {
             </a>
 
             {/* ── Desktop nav ── */}
-            <nav className="hidden lg:flex items-center gap-0.5">
+            <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
               {/* ESA by State dropdown */}
               <div className="relative"
                 onMouseEnter={() => setStateOpen(true)}
                 onMouseLeave={() => setStateOpen(false)}>
-                <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-gray-50"
-                  style={{ color: TEAL_DARK }}>
-                  <MapPin className="size-3.5 opacity-60" />
+                <button
+                  type="button"
+                  className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-gray-50"
+                  style={{ color: TEAL_DARK }}
+                  aria-expanded={stateOpen}
+                  aria-haspopup="menu"
+                  aria-controls="esa-state-menu"
+                  onClick={() => setStateOpen((open) => !open)}
+                >
+                  <MapPin className="size-3.5 opacity-60" aria-hidden />
                   ESA by State
-                  <ChevronDown className={`size-3.5 opacity-60 transition-transform duration-200 ${stateOpen ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`size-3.5 opacity-60 transition-transform duration-200 ${stateOpen ? "rotate-180" : ""}`} aria-hidden />
                 </button>
 
                 {stateOpen && (
-                  <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl overflow-hidden py-1.5"
+                  <div
+                    id="esa-state-menu"
+                    role="menu"
+                    className="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl overflow-hidden py-1.5"
                     style={{
                       boxShadow: "0 12px 40px rgba(29,112,128,0.15)",
                       border: "1px solid rgba(29,112,128,0.1)",
                     }}>
                     {esaByState.map((s) => (
-                      <a key={s} href="#"
+                      <a key={s} href="#hero" role="menuitem"
                         className="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all"
                         style={{ color: "#374151" }}
                         onMouseEnter={e => {
@@ -126,12 +135,12 @@ export default function Header() {
                           e.currentTarget.style.background = "";
                           e.currentTarget.style.color = "#374151";
                         }}>
-                        <MapPin className="size-3 opacity-40" />
+                        <MapPin className="size-3 opacity-40" aria-hidden />
                         {s}
                       </a>
                     ))}
                     <Separator className="my-1 mx-3" style={{ background: "rgba(29,112,128,0.1)" }} />
-                    <a href="#" className="flex items-center gap-1 px-4 py-2 text-sm font-bold"
+                    <a href="#hero" role="menuitem" className="flex items-center gap-1 px-4 py-2 text-sm font-bold"
                       style={{ color: TEAL }}>
                       View all 50 States →
                     </a>
@@ -154,11 +163,12 @@ export default function Header() {
             <div className="flex items-center gap-2 shrink-0">
               {/* Phone — hidden on small */}
               <a href="tel:+18884124041"
+                aria-label="Call (888) 412-4041"
                 className="hidden md:flex items-center gap-1.5 text-sm font-medium transition-colors rounded-lg px-2 py-1.5 hover:bg-gray-50"
-                style={{ color: "#5A7A80" }}>
+                style={{ color: "#4A656B" }}>
                 <div className="w-6 h-6 rounded-md flex items-center justify-center"
                   style={{ background: TEAL_LIGHT }}>
-                  <Phone className="size-3.5" style={{ color: TEAL }} />
+                  <Phone className="size-3.5" style={{ color: TEAL }} aria-hidden />
                 </div>
                 <span className="hidden xl:block">(888) 412-4041</span>
               </a>
@@ -228,7 +238,7 @@ export default function Header() {
                       </button>
                     </div>
 
-                    <nav className="flex-1 overflow-y-auto p-4 flex flex-col gap-0.5">
+                    <nav className="flex-1 overflow-y-auto p-4 flex flex-col gap-0.5" aria-label="Mobile navigation">
                       <p className="text-[10px] font-bold uppercase tracking-widest px-3 pt-1 pb-2" style={{ color: "#9CA3AF" }}>
                         Navigation
                       </p>
@@ -238,18 +248,21 @@ export default function Header() {
                         className="flex w-full items-center justify-between gap-2.5 px-3 py-2.5 text-sm font-medium rounded-xl transition-colors hover:bg-gray-50"
                         style={{ color: TEAL_DARK }}
                         aria-expanded={mobileStateOpen}
+                        aria-controls="mobile-esa-state-menu"
                       >
                         <span className="flex items-center gap-2.5">
-                          <MapPin className="size-4 shrink-0" style={{ color: GOLD }} />
+                          <MapPin className="size-4 shrink-0" style={{ color: GOLD }} aria-hidden />
                           ESA by State
                         </span>
                         <ChevronDown
                           className={`size-4 shrink-0 transition-transform duration-200 ${mobileStateOpen ? "rotate-180" : ""}`}
                           style={{ color: TEAL_DARK }}
+                          aria-hidden
                         />
                       </button>
                       {mobileStateOpen && (
                         <div
+                          id="mobile-esa-state-menu"
                           className="ml-3 mr-1 mb-1 flex flex-col gap-0.5 rounded-xl p-2"
                           style={{ background: TEAL_LIGHT }}
                         >

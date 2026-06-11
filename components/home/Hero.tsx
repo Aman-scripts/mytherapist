@@ -1,23 +1,15 @@
-"use client";
-
-import { useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { ShieldCheck, Star, ArrowRight, CheckCircle2, Award, TrendingUp, Calendar } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { ShieldCheck, Star, CheckCircle2, Award, TrendingUp, Calendar } from "lucide-react";
 
-const US_STATES = [
-  "Alabama","Alaska","Arizona","Arkansas","California","Colorado",
-  "Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho",
-  "Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana",
-  "Maine","Maryland","Massachusetts","Michigan","Minnesota",
-  "Mississippi","Missouri","Montana","Nebraska","Nevada",
-  "New Hampshire","New Jersey","New Mexico","New York",
-  "North Carolina","North Dakota","Ohio","Oklahoma","Oregon",
-  "Pennsylvania","Rhode Island","South Carolina","South Dakota",
-  "Tennessee","Texas","Utah","Vermont","Virginia","Washington",
-  "West Virginia","Wisconsin","Wyoming","Puerto Rico",
-];
+const HeroStateForm = dynamic(() => import("@/components/home/HeroStateForm"), {
+  loading: () => (
+    <div
+      className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-xl h-12"
+      aria-hidden
+    />
+  ),
+});
 
 const trustPoints = [
   "Evaluation by U.S. licensed professionals",
@@ -57,8 +49,6 @@ const GOLD       = "#C9A227";
 const GOLD_BRT   = "#E0B830";
 
 export default function Hero() {
-  const [state, setState] = useState("");
-
   return (
     <section id="hero" className="relative overflow-hidden flex flex-col min-h-[92vh]">
       {/* Background photo — visible, with shadow depth from overlays below */}
@@ -68,9 +58,10 @@ export default function Hero() {
           alt="Person lovingly caring for their emotional support dogs"
           fill
           priority
-          unoptimized
+          quality={75}
           className="object-cover object-[58%_center] sm:object-[62%_center] lg:object-[65%_center]"
           sizes="100vw"
+          fetchPriority="high"
         />
       </div>
 
@@ -127,13 +118,13 @@ export default function Hero() {
             <div className="flex items-center gap-2 flex-wrap">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest border"
                 style={{ background: `${GOLD}22`, color: GOLD_BRT, borderColor: `${GOLD}44` }}>
-                <Award className="size-3" /> Licensed &amp; HIPAA-Compliant
+                <Award className="size-3" aria-hidden /> Licensed &amp; HIPAA-Compliant
               </span>
               <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold"
                 style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.85)" }}>
-                <span className="inline-flex items-center gap-0.5">
+                <span className="inline-flex items-center gap-0.5" role="img" aria-label="4.9 out of 5 stars">
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="size-3 shrink-0" style={{ fill: GOLD, color: GOLD }} />
+                    <Star key={i} className="size-3 shrink-0" style={{ fill: GOLD, color: GOLD }} aria-hidden />
                   ))}
                 </span>
                 <span>4.9 Rated</span>
@@ -161,53 +152,15 @@ export default function Hero() {
             <ul className="flex flex-col gap-2.5">
               {trustPoints.map((pt) => (
                 <li key={pt} className="flex items-center gap-2.5 text-sm text-white/80">
-                  <CheckCircle2 className="size-4 shrink-0" style={{ color: GOLD }} />
+                  <CheckCircle2 className="size-4 shrink-0" style={{ color: GOLD }} aria-hidden />
                   {pt}
                 </li>
               ))}
             </ul>
 
-            {/* State select + CTA — equal height & width */}
-            <div className="relative z-20 grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-xl items-stretch">
-              <Select onValueChange={setState} value={state}>
-                <SelectTrigger
-                  className="!h-12 min-h-12 !w-full border-0 px-4 py-0 font-semibold rounded-full text-sm shadow-lg"
-                  style={{ height: 48, minHeight: 48, background: "rgba(255,255,255,0.96)", color: "#134C5F" }}
-                  aria-label="Select your state"
-                >
-                  <SelectValue placeholder="Select your state…" />
-                </SelectTrigger>
-                <SelectContent
-                  position="popper"
-                  align="start"
-                  sideOffset={6}
-                  className="z-[9999] max-h-64 w-[var(--radix-select-trigger-width)] rounded-xl border-0 p-1.5 shadow-xl bg-white"
-                >
-                  {US_STATES.map((s) => (
-                    <SelectItem
-                      key={s}
-                      value={s}
-                      className="cursor-pointer rounded-lg py-2.5 pl-3 pr-8 focus:bg-[#C9A227] focus:text-white data-[highlighted]:bg-[#C9A227] data-[highlighted]:text-white"
-                    >
-                      {s}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <Button
-                className="btn-hover-gold-line !h-12 min-h-12 w-full py-0 font-bold rounded-full text-white border-0 gap-2 justify-center"
-                style={{
-                  height: 48,
-                  minHeight: 48,
-                  background: `linear-gradient(135deg, ${GOLD}, ${GOLD_BRT})`,
-                  boxShadow: `0 8px 24px ${GOLD}55`,
-                }}
-              >
-                Get Started <ArrowRight className="size-4" />
-              </Button>
-            </div>
+            <HeroStateForm />
 
-            <p className="text-white/35 text-xs leading-relaxed">
+            <p className="text-white/65 text-xs leading-relaxed">
               Eligibility is determined by a licensed professional. Not everyone qualifies.
               We only charge after your evaluation is completed.
             </p>
@@ -216,8 +169,8 @@ export default function Hero() {
           {/* ── RIGHT: Glass card ── */}
           <div className="relative flex justify-center lg:justify-end mt-4 lg:mt-0">
             <div className="float relative w-full max-w-sm rounded-3xl p-7" style={{
-              background: "rgba(255,255,255,0.07)",
-              backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)",
+              background: "rgba(255,255,255,0.1)",
+              backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
               border: "1px solid rgba(255,255,255,0.14)",
               boxShadow: "0 24px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
             }}>
@@ -229,7 +182,7 @@ export default function Hero() {
                 </div>
                 <div>
                   <div className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-outfit)" }}>Your ESA Journey</div>
-                  <div className="text-white/45 text-xs">3 simple steps</div>
+                  <div className="text-white/70 text-xs">3 simple steps</div>
                 </div>
               </div>
 
@@ -249,7 +202,7 @@ export default function Hero() {
                   </div>
                   <div className="pt-1">
                     <div className="text-white text-sm font-semibold">{step.label}</div>
-                    <div className="text-white/45 text-xs">{step.sub}</div>
+                    <div className="text-white/70 text-xs">{step.sub}</div>
                   </div>
                 </div>
               ))}
@@ -264,7 +217,7 @@ export default function Hero() {
                       WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
                       fontFamily: "var(--font-outfit)",
                     }}>{s.v}</div>
-                    <div className="text-white/45 text-[10px] font-medium">{s.l}</div>
+                    <div className="text-white/70 text-[10px] font-medium">{s.l}</div>
                   </div>
                 ))}
               </div>
@@ -355,7 +308,7 @@ export default function Hero() {
 
       {/* Bottom wave */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none z-10" style={{ lineHeight: 0 }}>
-        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none" style={{ height: 60 }}>
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none" style={{ height: 60 }} aria-hidden>
           <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#F0F8F9" />
         </svg>
       </div>

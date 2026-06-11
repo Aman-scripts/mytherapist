@@ -65,7 +65,7 @@ export default function About() {
                     WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
                     fontFamily: "var(--font-outfit)",
                   }}>{value}</div>
-                  <div className="text-white/45 text-[10px] font-medium">{label}</div>
+                  <div className="text-white/70 text-[10px] font-medium">{label}</div>
                 </div>
               ))}
             </div>
@@ -92,7 +92,7 @@ export default function About() {
             }}>
               <PawPrint className="size-10 shrink-0" style={{ color: GOLD }} aria-hidden />
               <div>
-                <h4 className="text-white font-bold mb-1" style={{ fontFamily: "var(--font-outfit)" }}>Our Mission</h4>
+                <h3 className="text-white font-bold mb-1" style={{ fontFamily: "var(--font-outfit)" }}>Our Mission</h3>
                 <p className="text-white/65 text-sm leading-relaxed">
                   To bridge the gap between individuals who need emotional support and the qualified professionals
                   who can help them — with integrity, compassion, and transparency.

@@ -147,13 +147,14 @@ function SelectScrollUpButton({
   return (
     <SelectPrimitive.ScrollUpButton
       data-slot="select-scroll-up-button"
+      aria-label="Scroll up"
       className={cn(
         "z-10 flex cursor-default items-center justify-center bg-popover py-1 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
     >
-      <ChevronUpIcon
+      <ChevronUpIcon aria-hidden
       />
     </SelectPrimitive.ScrollUpButton>
   )
@@ -166,13 +167,14 @@ function SelectScrollDownButton({
   return (
     <SelectPrimitive.ScrollDownButton
       data-slot="select-scroll-down-button"
+      aria-label="Scroll down"
       className={cn(
         "z-10 flex cursor-default items-center justify-center bg-popover py-1 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
     >
-      <ChevronDownIcon
+      <ChevronDownIcon aria-hidden
       />
     </SelectPrimitive.ScrollDownButton>
   )

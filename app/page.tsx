@@ -1,22 +1,43 @@
+import dynamic from "next/dynamic";
 import Header from "@/components/home/Header";
 import Hero from "@/components/home/Hero";
 import Stats from "@/components/home/Stats";
-import HowItWorks from "@/components/home/HowItWorks";
-import Therapists from "@/components/home/Therapists";
-import WhyChooseUs from "@/components/home/WhyChooseUs";
-import VideoTestimonials from "@/components/home/VideoTestimonials";
-import Testimonials from "@/components/home/Testimonials";
-import EsaInfo from "@/components/home/EsaInfo";
-import About from "@/components/home/About";
-import Comparison from "@/components/home/Comparison";
-import FAQ from "@/components/home/FAQ";
 import Footer from "@/components/home/Footer";
+
+const HowItWorks = dynamic(() => import("@/components/home/HowItWorks"), {
+  loading: () => <div className="min-h-[480px]" aria-hidden />,
+});
+const Therapists = dynamic(() => import("@/components/home/Therapists"), {
+  loading: () => <div className="min-h-[520px]" aria-hidden />,
+});
+const WhyChooseUs = dynamic(() => import("@/components/home/WhyChooseUs"), {
+  loading: () => <div className="min-h-[480px]" aria-hidden />,
+});
+const VideoTestimonials = dynamic(
+  () => import("@/components/home/VideoTestimonials"),
+  { loading: () => <div className="min-h-[320px]" aria-hidden /> }
+);
+const Testimonials = dynamic(() => import("@/components/home/Testimonials"), {
+  loading: () => <div className="min-h-[400px]" aria-hidden />,
+});
+const EsaInfo = dynamic(() => import("@/components/home/EsaInfo"), {
+  loading: () => <div className="min-h-[480px]" aria-hidden />,
+});
+const About = dynamic(() => import("@/components/home/About"), {
+  loading: () => <div className="min-h-[400px]" aria-hidden />,
+});
+const Comparison = dynamic(() => import("@/components/home/Comparison"), {
+  loading: () => <div className="min-h-[360px]" aria-hidden />,
+});
+const FAQ = dynamic(() => import("@/components/home/FAQ"), {
+  loading: () => <div className="min-h-[400px]" aria-hidden />,
+});
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main-content">
         <Hero />
         <Stats />
         <HowItWorks />

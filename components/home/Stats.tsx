@@ -51,11 +51,11 @@ export default function Stats() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Percentage stats */}
         <div className="text-center mb-6 sm:mb-8">
-          <p className="text-[9px] font-bold tracking-widest uppercase mb-1.5" style={{ color: GOLD }}>By The Numbers</p>
+          <p className="text-[9px] font-bold tracking-widest uppercase mb-1.5" style={{ color: "#8A6F12" }}>By The Numbers</p>
           <h2 className="text-xl sm:text-2xl font-extrabold" style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}>
             Your ESA Journey Starts Here
           </h2>
-          <p className="mt-1.5 max-w-lg mx-auto text-xs leading-relaxed" style={{ color: "#5A7A80" }}>
+          <p className="mt-1.5 max-w-lg mx-auto text-xs leading-relaxed" style={{ color: "#4A656B" }}>
             See how emotional support animals transform lives for thousands of people nationwide.
           </p>
         </div>
@@ -72,8 +72,11 @@ export default function Stats() {
             >
               <Image
                 src={image}
-                alt={imageAlt}
+                alt=""
                 fill
+                loading="lazy"
+                quality={60}
+                aria-hidden
                 className="object-cover object-center"
                 sizes="(max-width: 640px) 100vw, 33vw"
               />
@@ -97,9 +100,9 @@ export default function Stats() {
                       ? `linear-gradient(135deg, ${GOLD}, #E0B830)`
                       : `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})`,
                   }}>
-                  {i === 0 && <Users className="size-4 text-white" />}
-                  {i === 1 && <Award className="size-4 text-white" />}
-                  {i === 2 && <FileCheck className="size-4 text-white" />}
+                  {i === 0 && <Users className="size-4 text-white" aria-hidden />}
+                  {i === 1 && <Award className="size-4 text-white" aria-hidden />}
+                  {i === 2 && <FileCheck className="size-4 text-white" aria-hidden />}
                 </div>
                 <div className="text-2xl sm:text-3xl font-extrabold mb-1.5" style={{
                   background: `linear-gradient(135deg, ${accent}, ${gold ? "#E0B830" : TEAL_DARK})`,
@@ -108,7 +111,7 @@ export default function Stats() {
                 }}>
                   {value}
                 </div>
-                <p className="text-xs leading-relaxed" style={{ color: "#5A7A80" }}>{desc}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "#4A656B" }}>{desc}</p>
               </div>
             </div>
           ))}

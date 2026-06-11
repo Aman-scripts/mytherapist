@@ -47,11 +47,11 @@ export default function HowItWorks() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: GOLD }}>Simple Process</p>
+          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: "#8A6F12" }}>Simple Process</p>
           <h2 className="text-3xl sm:text-4xl font-extrabold" style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}>
             How Online ESA Evaluation Works
           </h2>
-          <p className="mt-3 max-w-xl mx-auto text-sm leading-relaxed" style={{ color: "#5A7A80" }}>
+          <p className="mt-3 max-w-xl mx-auto text-sm leading-relaxed" style={{ color: "#4A656B" }}>
             A simple 3-step process to complete your emotional support animal letter evaluation
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function HowItWorks() {
                     ? `linear-gradient(135deg, ${GOLD}, #E0B830)`
                     : `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})`,
                 }}>
-                  <Icon className="size-8 text-white" />
+                  <Icon className="size-8 text-white" aria-hidden />
                 </div>
                 <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-black shadow"
                   style={{ background: gold ? TEAL_DARK : GOLD }}>
@@ -87,13 +87,16 @@ export default function HowItWorks() {
                   boxShadow: "0 3px 12px rgba(29,112,128,0.04)",
                 }}
               >
-                <Image
-                  src={image}
-                  alt={imageAlt}
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
+              <Image
+                src={image}
+                alt=""
+                fill
+                loading="lazy"
+                quality={60}
+                aria-hidden
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
 
                 <div
                   className="absolute inset-0 pointer-events-none"
@@ -106,7 +109,7 @@ export default function HowItWorks() {
 
                 <div className="relative z-10">
                   <h3 className="text-lg font-bold mb-2" style={{ color: TEAL_DARK, fontFamily: "var(--font-outfit)" }}>{title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "#5A7A80" }}>{desc}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "#4A656B" }}>{desc}</p>
                 </div>
               </div>
             </div>

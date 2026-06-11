@@ -31,8 +31,8 @@ const quickLinks = [
 ];
 
 const contactItems = [
-  { icon: Phone,  primary: "+1 (888) 412-4041",       secondary: "24/7 Online Support" },
-  { icon: Mail,   primary: "info@myesatherapist.com",   secondary: "Email us anytime" },
+  { icon: Phone,  primary: "+1 (888) 412-4041",       secondary: "24/7 Online Support", href: "tel:+18884124041" },
+  { icon: Mail,   primary: "info@myesatherapist.com",   secondary: "Email us anytime", href: "mailto:info@myesatherapist.com" },
   { icon: Clock,  primary: "Mon - Sat: 9AM - 6PM",      secondary: "Sunday: Closed" },
   { icon: MapPin, primary: "Serving All 50 US States",  secondary: "Nationwide Service" },
 ];
@@ -197,15 +197,21 @@ export default function Footer() {
           <div>
             <ColumnHeading>Get In Touch</ColumnHeading>
             <ul className="flex flex-col gap-5">
-              {contactItems.map(({ icon: Icon, primary, secondary }) => (
+              {contactItems.map(({ icon: Icon, primary, secondary, href }) => (
                 <li key={primary} className="flex items-start gap-3">
                   <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
                     style={{ background: `linear-gradient(135deg, ${TEAL_DARK}, ${TEAL})`, border: `1px solid ${GOLD}33` }}>
-                    <Icon className="size-4" style={{ color: GOLD }} />
+                    <Icon className="size-4" style={{ color: GOLD }} aria-hidden />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-white">{primary}</div>
-                    <div className="text-xs text-white/45 mt-0.5">{secondary}</div>
+                    {href ? (
+                      <a href={href} className="text-sm font-bold text-white hover:underline">
+                        {primary}
+                      </a>
+                    ) : (
+                      <div className="text-sm font-bold text-white">{primary}</div>
+                    )}
+                    <div className="text-xs text-white/70 mt-0.5">{secondary}</div>
                   </div>
                 </li>
               ))}
@@ -216,7 +222,7 @@ export default function Footer() {
         <Separator className="my-10" style={{ background: "rgba(255,255,255,0.1)" }} />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
-          <p className="text-sm text-white/50 text-center sm:text-left">
+          <p className="text-sm text-white/70 text-center sm:text-left">
             © {new Date().getFullYear()}{" "}
             <a href="https://myesatherapist.com" className="font-semibold hover:underline" style={{ color: GOLD }}>
               myesatherapist.com
@@ -224,9 +230,9 @@ export default function Footer() {
             {" "}— All Rights Reserved
           </p>
           <div className="flex items-center gap-5 shrink-0">
-            <a href="#" className="text-sm text-white/50 hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="text-sm text-white/50 hover:text-white transition-colors">Refund Policy</a>
-            <a href="#" className="text-sm text-white/50 hover:text-white transition-colors">Terms of Use</a>
+            <a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Refund Policy</a>
+            <a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Terms of Use</a>
           </div>
         </div>
 
