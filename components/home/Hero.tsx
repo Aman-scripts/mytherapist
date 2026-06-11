@@ -116,12 +116,27 @@ export default function Hero() {
           <div className="flex flex-col gap-7">
             {/* Eyebrow */}
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest border"
-                style={{ background: `${GOLD}22`, color: GOLD_BRT, borderColor: `${GOLD}44` }}>
-                <Award className="size-3" aria-hidden /> Licensed &amp; HIPAA-Compliant
+              <span
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest border shadow-sm"
+                style={{
+                  background: "linear-gradient(135deg, #FDF8E8 0%, #FFF4CC 100%)",
+                  color: TEAL_DARK,
+                  borderColor: GOLD,
+                  boxShadow: "0 4px 14px rgba(0,0,0,0.12)",
+                }}
+              >
+                <Award className="size-3.5 shrink-0" style={{ color: GOLD }} aria-hidden />
+                Licensed &amp; HIPAA-Compliant
               </span>
-              <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold"
-                style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.85)" }}>
+              <span
+                className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-bold border shadow-sm"
+                style={{
+                  background: "rgba(255,255,255,0.97)",
+                  borderColor: "rgba(29,112,128,0.18)",
+                  color: TEAL_DARK,
+                  boxShadow: "0 4px 14px rgba(0,0,0,0.12)",
+                }}
+              >
                 <span className="inline-flex items-center gap-0.5" role="img" aria-label="4.9 out of 5 stars">
                   {[1, 2, 3, 4, 5].map((i) => (
                     <Star key={i} className="size-3 shrink-0" style={{ fill: GOLD, color: GOLD }} aria-hidden />
